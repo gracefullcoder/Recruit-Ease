@@ -1,0 +1,50 @@
+.join-room {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+
+    .join-form {
+        margin: 1rem;
+        width: 42rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3.5rem;
+        background-color: $surface-300;
+
+        .form-heading {
+            padding: 3rem;
+            background-color: $surface-200;
+            width: 100%;
+            border-radius: 3.5rem 3.5rem 0rem 0rem;
+            text-align: center;
+            letter-spacing: 2.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 3rem 4rem 3rem;
+
+            input {
+                height: 6rem;
+                background-color: $surface-200;
+                border-radius: 5rem;
+                padding: 1rem 3rem;
+                font-size: 2rem;
+                letter-spacing: 1px;
+                color: white;
+            }
+
+            button {
+                margin-block-start: 1rem;
+            }
+        }
+    }
+}

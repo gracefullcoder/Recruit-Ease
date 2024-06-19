@@ -1,0 +1,190 @@
+/** SCSS DARK THEME PRIMARY COLORS */
+$primary-100: #382bf0;
+$primary-200: #5e43f3;
+$primary-500: #7a5af5;
+$primary-400: #9171f8;
+$primary-500: #a688fa;
+$primary-600: #ba9ffb;
+
+/** SCSS DARK THEME SURFACE COLORS */
+$surface-100: #121212;
+$surface-200: #282828;
+$surface-300: #3f3f3f;
+$surface-400: #575757;
+$surface-500: #717171;
+$surface-600: #8b8b8b;
+
+/** SCSS DARK THEME MIXED SURFACE COLORS */
+$surface-mixed-100: #1a1625;
+$surface-mixed-200: #2f2b3a;
+$surface-mixed-300: #46424f;
+$surface-mixed-400: #5e5a66;
+$surface-mixed-500: #76737e;
+$surface-mixed-600: #908d96;
+
+
+$fontFamily-main: "Quicksand", serif;
+$fontFamily-text: 'Lato', sans-serif;
+
+$fontSize-headline-1: calc(2rem + 2.5vw);
+$fontSize-headline-2: calc(1.3rem + 2.4vw);
+$fontSize-headline-3: calc(0.5rem + 2.4vw);
+$fontSize-headline-4: 2rem;
+$fontSize-headline-5: calc(0.2rem + 2.4vw);
+$fontSize-title-1: calc(1.6rem + 1.2vw);
+$fontSize-title-2: 2.2rem;
+$fontSize-title-3: 2.1rem;
+$fontSize-title-4: calc(1.6rem + 1.2vw);
+$fontSize-body-1: 2.4rem;
+$fontSize-body-2: 1.6rem;
+$fontSize-body-3: 1.8rem;
+$fontSize-body-4: 1.6rem;
+$fontSize-label-1: 1.4rem;
+$fontSize-label-2: 1.2rem;
+
+
+
+
+/*-----------------------------------*\
+      #RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+img,
+data,
+span,
+input,
+button,
+select,
+ion-icon,
+textarea {
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+}
+
+input,
+button,
+select,
+textarea {
+    background: none;
+    border: none;
+    font: inherit;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+address {
+    font-style: normal;
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+    font-family: $fontFamily-text;
+}
+
+body {
+    font-size: 62.5%;
+    font-family: $fontFamily-text;
+    font-weight: 700;
+    background-color: $surface-mixed-100;
+    color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,button{
+    font-family: $fontFamily-main;
+    font-weight: 300;
+    color: $primary-500;
+}
+
+p,span,div{
+    font-family: $fontFamily-text;
+    font-weight: 500;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--gold-crayola);
+}
+
+
+// typography
+
+.label-1 {
+    font-size: $fontSize-label-1;
+}
+
+.label-2 {
+    font-size: $fontSize-label-2;
+}
+
+.headline-1 {
+    font-size: $fontSize-headline-1;
+}
+
+.headline-2 {
+
+    font-size: $fontSize-headline-2;
+}
+
+.headline-3{
+    font-size: $fontSize-headline-3;
+}
+
+.headline-4{
+    font-size: $fontSize-headline-4;
+}
+
+.headline-5{
+    font-size: $fontSize-headline-5;
+}
+
+.btn{
+    height: auto;
+    width: auto;
+    background-color: $surface-200;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    color: white;
+}
