@@ -6,8 +6,12 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 const port = 3000;
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const corsOptions = {
-    origin: "*",
+    origin: process.env.CLIENT_ENDPOINT,
     methods: ["GET", "PUSH", "PUT", "PATCH", "DELETE"],
     credentials: true
 };
