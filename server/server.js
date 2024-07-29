@@ -32,14 +32,13 @@ io.on("connection", (socket) => {
 
     socket.on("offer-intrest",({offerFrom,offerTo,offer}) => {
         const toUserSocket = emailToSocketMapping.get(offerTo);
-        console.log(toUserSocket);
+        console.log(toUserSocket,"  ----8888---- ", offerFrom);// jisne call lagaya usko batao u got offer from him
         socket.to(toUserSocket).emit("connect-offer",{offerFrom,offer});
-        console.log(offerFrom);
     })
 
     socket.on("offer-accepted",({offerFrom,answer}) => {
         const socketofferFrom = emailToSocketMapping.get(offerFrom);
-        console.log(answer);
+        console.log("received the answer means offer accepted",answer);
         socket.to(socketofferFrom).emit("join-video-call",{answer});
         
     })

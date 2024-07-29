@@ -14,8 +14,8 @@ function JoinRoom() {
         function handleJoining({ roomId ,emailId}) {
             navigate(`/room/${roomId}/${emailId}`)
         }
-        socket.on("joined-room", (data) => (handleJoining(data)));
 
+        socket.on("joined-room", (data) => (handleJoining(data)));
 
         return (() => {
             console.log("user ", joinDetails.emailId," leaved" );

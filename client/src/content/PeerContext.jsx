@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from "react";
+import React, { createContext, useState, useContext, useEffect, useMemo, useCallback } from "react";
 
 const PeerContext = createContext(null);
 
@@ -13,25 +13,53 @@ export const PeerProvider = ({ children }) => {
     //aab call karne wale ko apna peer mil gaya aab wo answer karega usko listen karna hai
     const createOffer = async () => {
         const offer = await peerConnection.createOffer();
-        const peerDescription = await peerConnection.setLocalDescription(offer);
+        const peerDescription = await peerConnection.setLocalDescription(new RTCSessionDescription(offer));
         // signalingChannel.send({ 'offer': offer });
         return offer;
     }
 
     const createAnswer = async (offer) => {
-        await peerConnection.setRemoteDescription(offer);
+        await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
         const answer = await peerConnection.createAnswer();
         console.log(answer);
-        await peerConnection.setLocalDescription(answer);
+        await peerConnection.setLocalDescription(new RTCSessionDescription(answer));
         return answer;
     }
 
     const setRemoteAnswer = async (answer) => {
-        console.log(answer);
+        console.log("got the answer and it setting it", answer);
         await peerConnection.setRemoteDescription(answer);
     }
 
-    return (<PeerContext.Provider value={{ peerConnection, createOffer, createAnswer, setRemoteAnswer }}>
+
+    //ye function apne stream ke tracks ko extract karke peer mai daldega
+    const sendStream = async (stream) => {
+        const tracks = stream.getTracks();
+        console.log(tracks)
+        for (let track of tracks) {
+            const data = peerConnection.addTrack(track, stream);
+            console.log(data)
+        }
+    }
+
+    const [remoteStreams, setRemoteStreams] = useState(null);
+
+    const handleRemoteMedia = useCallback(
+        async (event) => {
+            const remoteStream = event.streams;
+            console.log("got tracks", remoteStream);
+            setRemoteStreams(remoteStream[0]);
+        },
+        [],
+    )
+
+    useEffect(() => {
+        peerConnection.addEventListener('track',(event) => (handleRemoteMedia(event)));
+
+        return (() => (peerConnection.removeEventListener('track', (handleRemoteMedia))))
+    }, [peerConnection, handleRemoteMedia])
+
+    return (<PeerContext.Provider value={{ peerConnection, createOffer, createAnswer, setRemoteAnswer, sendStream, remoteStreams }}>
         {children}
     </PeerContext.Provider>)
 }
