@@ -1,60 +1,51 @@
 const express = require("express");
+const http = require("http");
 const app = express();
-const { createServer } = require("node:http");
-const server = createServer(app);
-const { Server } = require("socket.io");
+const server = http.createServer(app);
+const socket = require("socket.io");
 const cors = require("cors");
-const port = 3000;
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+const rooms = {};
 
 const corsOptions = {
-    origin: process.env.CLIENT_ENDPOINT,
-    methods: ["GET", "PUSH", "PUT", "PATCH", "DELETE"],
+    origin: '*',
+    methods: "GET,POST",
+    allowedHeaders: "Content-Type,Authorization",
     credentials: true
 };
 
+const io = socket(server, {
+    cors: corsOptions
+});
 app.use(cors(corsOptions));
 
-const emailToSocketMapping = new Map();
+io.on("connection", socket => {
+    socket.on("join room", roomID => {
+        console.log("join room -> ", roomID);
+        if (rooms[roomID]) {
+            rooms[roomID].push(socket.id);
+        } else {
+            rooms[roomID] = [socket.id];
+        }
+        const otherUser = rooms[roomID].find(id => id !== socket.id);
+        if (otherUser) {
+            socket.emit("other user", otherUser);
+            socket.to(otherUser).emit("user joined", socket.id);
+        }
+    });
 
-const io = new Server(server, { cors: corsOptions });
+    socket.on("offer", payload => {
+        io.to(payload.target).emit("offer", payload);
+    });
 
-io.on("connection", (socket) => {
-    console.log("connected", socket.id);
+    socket.on("answer", payload => {
+        io.to(payload.target).emit("answer", payload);
+    });
 
-    socket.on("join-it", ({ roomId, emailId }) => {
-        console.log(`user connected to ${roomId} from email ${emailId}`);
-        socket.join(roomId); 
-        emailToSocketMapping.set(emailId,socket.id);
-        socket.emit("joined-room", { roomId,emailId });
-        socket.broadcast.to(roomId).emit("user-joined", { emailId });
-        console.log(emailToSocketMapping);
-    })
+    socket.on("ice-candidate", incoming => {
+        console.log(incoming);
+        io.to(incoming.target).emit("ice-candidate", incoming.candidate);
+    });
+});
 
-    socket.on("offer-intrest",({offerFrom,offerTo,offer}) => {
-        const toUserSocket = emailToSocketMapping.get(offerTo);
-        console.log(toUserSocket,"  ----8888---- ", offerFrom);// jisne call lagaya usko batao u got offer from him
-        socket.to(toUserSocket).emit("connect-offer",{offerFrom,offer});
-    })
-
-    socket.on("offer-accepted",({offerFrom,answer}) => {
-        const socketofferFrom = emailToSocketMapping.get(offerFrom);
-        console.log("received the answer means offer accepted",answer);
-        socket.to(socketofferFrom).emit("join-video-call",{answer});
-        
-    })
-})
-
-
-server.listen(port, (req, res) => {
-    console.log("listening on port ", port);
-})
-
-app.get("/", (req, res) => {
-    res.send("VideoCall Application");
-})
-
-
+server.listen(8000, () => console.log('server is running on port 8000'));
