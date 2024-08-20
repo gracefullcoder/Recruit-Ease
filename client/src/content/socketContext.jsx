@@ -5,6 +5,7 @@ const SocketContext = createContext(null);
 
 export const SocketProvider = ({ children }) => {
     const socket = useMemo(() => (io(import.meta.env.VITE_SERVER_ENDPOINT)), []);
+    console.log(import.meta.env.VITE_SERVER_ENDPOINT);
     
     return (<SocketContext.Provider value={{socket}}>
         {children}

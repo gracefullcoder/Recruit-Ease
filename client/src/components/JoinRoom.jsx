@@ -1,27 +1,12 @@
-import React, { Component, useEffect, useState } from 'react'
-import { useSocketContext } from '../content/socketContext';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function JoinRoom() {
-    const { socket } = useSocketContext();
     const navigate = useNavigate();
     const [joinDetails, setJoinDetails] = useState({
         roomId: "",
         emailId: ""
     });
-
-    useEffect(() => {
-        function handleJoining({ roomId ,emailId}) {
-            navigate(`/room/${roomId}/${emailId}`)
-        }
-
-        socket.on("joined-room", (data) => (handleJoining(data)));
-
-        return (() => {
-            console.log("user ", joinDetails.emailId," leaved" );
-            socket.off("joined-room",handleJoining
-            )});
-    }, [])
 
     function handleInputChange(event) {
         setJoinDetails((prevData) => ({ ...prevData, [event.target.name]: event.target.value }));
@@ -29,11 +14,9 @@ function JoinRoom() {
 
     function joinRoom(event) {
         event.preventDefault();
-        socket.emit("join-it", joinDetails);
-        setJoinDetails({
-            roomId: "",
-            emailId: ""
-        })
+        const roomId = joinDetails.roomId;
+        const emailId = joinDetails.emailId;
+        navigate(`/room/${roomId}/${emailId}`)
     }
 
     return (

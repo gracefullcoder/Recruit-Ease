@@ -1,71 +1,105 @@
-import React, { createContext, useState, useContext, useEffect, useMemo, useCallback } from "react";
+import React, { createContext, useContext,useRef,useEffect } from "react";
+import { useSocketContext } from "./socketContext";
 
 const PeerContext = createContext(null);
 
 export const PeerProvider = ({ children }) => {
-    const configuration = { 'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' }] }
-    const peerConnection = useMemo(() => (new RTCPeerConnection(configuration)), []); //ye single object leta hai and calls the the constructor which  is must to create perr
-    //ye peer connection mai respective peer ka poora details hai
-    //aab ye baan gaya tho fir offer and answer create karna rahega and then signalling the SDP offer or answer
-    //signalling means ek baar offer yaa answer baan gaya tho usse doosre remote peer ko bheja i.e sdp wala part 
-    //call aya tho abb apan offer create karenge calling side ko apna details signal kardenge 
-    //createOffer -> peerDescription banadega jisko localdescriptionset kardenge using setLocalDescription
-    //aab call karne wale ko apna peer mil gaya aab wo answer karega usko listen karna hai
-    const createOffer = async () => {
-        const offer = await peerConnection.createOffer();
-        const peerDescription = await peerConnection.setLocalDescription(new RTCSessionDescription(offer));
-        // signalingChannel.send({ 'offer': offer });
-        return offer;
+    const peerRef = useRef();
+    const userStream = useRef();
+    const otherUser = useRef();
+    const partnerVideo = useRef();
+
+    const {socket} = useSocketContext();
+
+    function callUser(userID) {
+        peerRef.current = createPeer(userID);
+        userStream.current.getTracks().forEach(track => peerRef.current.addTrack(track, userStream.current));
     }
 
-    const createAnswer = async (offer) => {
-        await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-        const answer = await peerConnection.createAnswer();
-        console.log(answer);
-        await peerConnection.setLocalDescription(new RTCSessionDescription(answer));
-        return answer;
+    function createPeer(userID) {
+        const peer = new RTCPeerConnection({
+            iceServers: [
+                {
+                    urls: "Stun:stun.l.google.com:19302"
+                },
+                {
+                    urls: 'turn:numb.viagenie.ca',
+                    credential: 'muazkh',
+                    username: 'webrtc@live.com'
+                },
+            ]
+        });
+
+        peer.onicecandidate = handleICECandidateEvent;
+        peer.ontrack = handleTrackEvent;
+        peer.onnegotiationneeded = () => handleNegotiationNeededEvent(userID);
+
+        return peer;
     }
 
-    const setRemoteAnswer = async (answer) => {
-        console.log("got the answer and it setting it", answer);
-        await peerConnection.setRemoteDescription(answer);
+    function handleNegotiationNeededEvent(userID) {
+        peerRef.current.createOffer().then(offer => {
+            return peerRef.current.setLocalDescription(offer);
+        }).then(() => {
+            const payload = {
+                target: userID,
+                caller: socket.id,
+                sdp: peerRef.current.localDescription
+            };
+            socket.emit("offer", payload);
+        }).catch(e => console.log(e));
     }
 
+    function handleRecieveCall(incoming) {
+        peerRef.current = createPeer();
+        const desc = new RTCSessionDescription(incoming.sdp);
+        peerRef.current.setRemoteDescription(desc).then(() => {
+            userStream.current.getTracks().forEach(track => peerRef.current.addTrack(track, userStream.current));
+        }).then(() => {
+            return peerRef.current.createAnswer();
+        }).then(answer => {
+            return peerRef.current.setLocalDescription(answer);
+        }).then(() => {
+            const payload = {
+                target: incoming.caller,
+                caller: socket.id,
+                sdp: peerRef.current.localDescription
+            }
+            socket.emit("answer", payload);
+        })
+    }
 
-    //ye function apne stream ke tracks ko extract karke peer mai daldega
-    const sendStream = async (stream) => {
-        const tracks = stream.getTracks();
-        console.log(tracks)
-        for (let track of tracks) {
-            const data = peerConnection.addTrack(track, stream);
-            console.log(data)
+    function handleAnswer(message) {
+        const desc = new RTCSessionDescription(message.sdp);
+        peerRef.current.setRemoteDescription(desc).catch(e => console.log(e));
+    }
+
+    function handleICECandidateEvent(e) {
+        if (e.candidate) {
+            const payload = {
+                target: otherUser.current,
+                candidate: e.candidate,
+            }
+            socket.emit("ice-candidate", payload);
         }
     }
 
-    const [remoteStreams, setRemoteStreams] = useState(null);
+    function handleNewICECandidateMsg(incoming) {
+        const candidate = new RTCIceCandidate(incoming);
 
-    const handleRemoteMedia = useCallback(
-        async (event) => {
-            const remoteStream = event.streams;
-            console.log("got tracks", remoteStream);
-            setRemoteStreams(remoteStream[0]);
-        },
-        [],
+        peerRef.current.addIceCandidate(candidate)
+            .catch(e => console.log(e));
+    }
+
+    function handleTrackEvent(e) {
+        partnerVideo.current.srcObject = e.streams[0];
+    };
+
+    return (
+        <PeerContext.Provider value={{ userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg }}>
+            {children}
+        </PeerContext.Provider>
     )
-
-    useEffect(() => {
-        peerConnection.addEventListener('track',(event) => (handleRemoteMedia(event)));
-
-        return (() => (peerConnection.removeEventListener('track', (handleRemoteMedia))))
-    }, [peerConnection, handleRemoteMedia])
-
-    return (<PeerContext.Provider value={{ peerConnection, createOffer, createAnswer, setRemoteAnswer, sendStream, remoteStreams }}>
-        {children}
-    </PeerContext.Provider>)
 }
-
-
-
-// export const incommingCall = () = {}
 
 export const usePeer = () => (useContext(PeerContext));

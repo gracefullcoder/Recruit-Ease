@@ -1,0 +1,34 @@
+.room{
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 5rem;
+
+
+    .video-container{
+        width: 100%;
+        max-width: 60rem;
+        height: auto;
+        border: 5px solid black;
+        border-radius: 1rem;
+    }
+}
+
+.meeting-options{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 10rem;
+
+    .media-button{
+        font-size: 3rem;
+        cursor: pointer;
+        padding: 1.5rem;
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+}
