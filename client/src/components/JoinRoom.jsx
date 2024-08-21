@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function JoinRoom() {
     const navigate = useNavigate();
@@ -16,7 +17,9 @@ function JoinRoom() {
         event.preventDefault();
         const roomId = joinDetails.roomId;
         const emailId = joinDetails.emailId;
-        navigate(`/room/${roomId}/${emailId}`)
+
+        if(roomId && emailId) navigate(`/room/${roomId}/${emailId}`);
+        else toast.error("Please Fill required Data to start meeting!")
     }
 
     return (

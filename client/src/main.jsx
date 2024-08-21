@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SocketProvider } from './content/socketContext.jsx';
 import Room from './components/Room.jsx';
 import { PeerProvider } from './content/PeerContext.jsx';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 const router = createBrowserRouter([
   {
@@ -25,5 +28,18 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+
+  <>
+   <ToastContainer
+        style={{ width: "100%", padding: "2rem", maxWidth: "50rem", textAlign: "center",fontSize:"1.5rem" }}
+        limit={3}
+        closeOnClick
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
+
+    <RouterProvider router={router} />
+  </>
 )
