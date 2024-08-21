@@ -1,4 +1,4 @@
-import React, { createContext, useContext,useRef,useEffect } from "react";
+import React, { createContext, useContext, useRef, useEffect } from "react";
 import { useSocketContext } from "./socketContext";
 
 const PeerContext = createContext(null);
@@ -9,7 +9,7 @@ export const PeerProvider = ({ children }) => {
     const otherUser = useRef();
     const partnerVideo = useRef();
 
-    const {socket} = useSocketContext();
+    const { socket } = useSocketContext();
 
     function callUser(userID) {
         peerRef.current = createPeer(userID);
@@ -95,8 +95,32 @@ export const PeerProvider = ({ children }) => {
         partnerVideo.current.srcObject = e.streams[0];
     };
 
+    async function shareScreen() {
+        const stream = await navigator.mediaDevices.getDisplayMedia({ cursor: true });
+        const screenTrack = stream.getTracks()[0];
+
+        const senders = peerRef.current.getSenders();
+        const videoSender = senders.find(sender => sender.track.kind === 'video');
+        if (videoSender) {
+            videoSender.replaceTrack(screenTrack);
+        }
+
+        return {screenTrack,stream};
+    }
+
+    async function stopScreenShare() {
+        const senders = await peerRef.current.getSenders();
+        const videoSender = await senders.find(sender => sender.track.kind === "video");
+        if (videoSender) {
+            const originalVideoTrack = userStream.current.getTracks().find(track => track.kind === 'video');
+            if (originalVideoTrack) {
+                videoSender.replaceTrack(originalVideoTrack);
+            }
+        }
+    };
+
     return (
-        <PeerContext.Provider value={{ userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg }}>
+        <PeerContext.Provider value={{ userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen,stopScreenShare }}>
             {children}
         </PeerContext.Provider>
     )
