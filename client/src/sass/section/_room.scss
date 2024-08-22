@@ -6,11 +6,20 @@
     justify-content: center;
     align-items: center;
     margin-block-start: 5rem;
+    padding: 2rem;
 
+
+    .user{
+        width: 100%;
+        max-width: 60rem;
+        text-align: center;
+        font-size: 2rem;
+        color: $primary-500;
+        line-height: 3rem;
+    }
 
     .video-container{
         width: 100%;
-        max-width: 60rem;
         height: auto;
         border: 5px solid black;
         border-radius: 1rem;

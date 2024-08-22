@@ -5,8 +5,6 @@ const server = http.createServer(app);
 const socket = require("socket.io");
 const cors = require("cors");
 
-const rooms = {};
-
 const corsOptions = {
     origin: '*',
     methods: "GET,POST",
@@ -19,18 +17,25 @@ const io = socket(server, {
 });
 app.use(cors(corsOptions));
 
+const rooms = {};
+const socketToEmailMapping = new Map();
+
 io.on("connection", socket => {
-    socket.on("join room", roomID => {
-        console.log("join room -> ", roomID);
-        if (rooms[roomID]) {
-            rooms[roomID].push(socket.id);
+    socket.on("join room", ({ roomId, emailId }) => {
+        console.log("join room -> ", roomId);
+        if (rooms[roomId]) {
+            rooms[roomId].push(socket.id);
         } else {
-            rooms[roomID] = [socket.id];
+            rooms[roomId] = [socket.id];
         }
-        const otherUser = rooms[roomID].find(id => id !== socket.id);
+
+        socketToEmailMapping.set(socket.id, emailId);
+
+        const otherUser = rooms[roomId].find(id => id !== socket.id);
+        const otherUserMail = socketToEmailMapping.get(otherUser);
         if (otherUser) {
-            socket.emit("other user", otherUser);
-            socket.to(otherUser).emit("user joined", socket.id);
+            socket.emit("other user", { userId: otherUser, emailId: otherUserMail });
+            socket.to(otherUser).emit("user joined", { userId: socket.id, emailId });
         }
     });
 

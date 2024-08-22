@@ -7,9 +7,11 @@ function Room() {
     const userVideo = useRef();
     const screenRef = useRef();
     const { socket } = useSocketContext();
-    const {userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen, stopScreenShare } = usePeer();
-    const { roomID } = useParams();
+    const { userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen, stopScreenShare } = usePeer();
+    const { roomId, emailId } = useParams();
     const [mediaOptions, setMediaOptions] = useState({ mic: true, video: true, screen: false });
+    const [isRemoteUser, setIsRemoteUser] = useState(false);
+    // const [remoteUserMail,setRemoteUserMail] = useState("");
 
     useEffect(() => {
         const joinMeeting = async () => {
@@ -17,15 +19,17 @@ function Room() {
             userVideo.current.srcObject = stream;
             userStream.current = stream;
 
-            socket.emit("join room", roomID);
+            socket.emit("join room", { roomId, emailId });
 
-            socket.on('other user', userID => {
-                callUser(userID);
-                otherUser.current = userID;
+            socket.on('other user', ({ userId, emailId }) => {
+                callUser(userId);
+                otherUser.current = { userId, emailId };
+                setIsRemoteUser(true);
             });
 
-            socket.on("user joined", userID => {
-                otherUser.current = userID;
+            socket.on("user joined", ({ userId, emailId }) => {
+                otherUser.current = { userId, emailId };
+                setIsRemoteUser(true);
             });
 
             socket.on("offer", handleRecieveCall);
@@ -36,7 +40,7 @@ function Room() {
         }
 
         joinMeeting();
-    }, [socket, roomID, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg]);
+    }, [socket, roomId, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg]);
 
     const toggleMediaOptions = async (option) => {
         let updatedOptions = {};
@@ -59,7 +63,7 @@ function Room() {
 
         if (option === "screen" && userStream.current) {
             if (!mediaOptions.screen) {
-                const {screenTrack,stream} = await shareScreen();
+                const { screenTrack, stream } = await shareScreen();
                 screenRef.current = screenTrack;
                 userVideo.current.srcObject = stream;
                 screenRef.current.onended = async function () {
@@ -83,8 +87,15 @@ function Room() {
     return (
         <div>
             <div className="room">
-                <video autoPlay ref={userVideo} className='video-container' muted />
-                <video controls autoPlay ref={partnerVideo} className='video-container' />
+                <div className='user'>
+                    <video autoPlay ref={userVideo} className='video-container' muted />
+                    <p>{emailId}</p>
+                </div>
+                {isRemoteUser &&
+                    <div className='user'>
+                        <video autoPlay ref={partnerVideo} className='video-container' />
+                        <p>{otherUser.current.emailId}</p>
+                    </div>}
             </div>
 
             <div className="meeting-options">

@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />
   }, {
-    path: '/room/:roomID/:emailId',
+    path: '/room/:roomId/:emailId',
     element:
       <>
         <SocketProvider>

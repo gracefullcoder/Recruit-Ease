@@ -11,12 +11,12 @@ export const PeerProvider = ({ children }) => {
 
     const { socket } = useSocketContext();
 
-    function callUser(userID) {
-        peerRef.current = createPeer(userID);
+    function callUser(userId) {
+        peerRef.current = createPeer(userId);
         userStream.current.getTracks().forEach(track => peerRef.current.addTrack(track, userStream.current));
     }
 
-    function createPeer(userID) {
+    function createPeer(userId) {
         const peer = new RTCPeerConnection({
             iceServers: [
                 {
@@ -32,17 +32,17 @@ export const PeerProvider = ({ children }) => {
 
         peer.onicecandidate = handleICECandidateEvent;
         peer.ontrack = handleTrackEvent;
-        peer.onnegotiationneeded = () => handleNegotiationNeededEvent(userID);
+        peer.onnegotiationneeded = () => handleNegotiationNeededEvent(userId);
 
         return peer;
     }
 
-    function handleNegotiationNeededEvent(userID) {
+    function handleNegotiationNeededEvent(userId) {
         peerRef.current.createOffer().then(offer => {
             return peerRef.current.setLocalDescription(offer);
         }).then(() => {
             const payload = {
-                target: userID,
+                target: userId,
                 caller: socket.id,
                 sdp: peerRef.current.localDescription
             };
@@ -77,7 +77,7 @@ export const PeerProvider = ({ children }) => {
     function handleICECandidateEvent(e) {
         if (e.candidate) {
             const payload = {
-                target: otherUser.current,
+                target: otherUser.current.userId,
                 candidate: e.candidate,
             }
             socket.emit("ice-candidate", payload);
