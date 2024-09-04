@@ -1,0 +1,239 @@
+.dashboard {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-block: 5rem 2rem;
+    background-color: $surface-mixed-100;
+    color: $primary-500;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 2.4rem;
+    color: $primary-400;
+}
+
+.profile-picture {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: $primary-500;
+    margin-bottom: 2rem;
+    border-bottom: 0.2rem solid $surface-300;
+    padding-bottom: 1rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: $surface-200;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.5rem);
+}
+
+.card-title {
+    font-size: 1.8rem;
+    color: $primary-400;
+    margin-bottom: 1rem;
+}
+
+.card-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.card-list li {
+    font-size: 1.4rem;
+    color: $primary-600;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 1.4rem;
+    color: $primary-600;
+    margin-bottom: 0.5rem;
+}
+
+.button {
+    background-color: $primary-500;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: $primary-200;
+}
+
+.button-add {
+    background-color: $primary-400;
+    margin-top: 2rem;
+}
+
+.button-add:hover {
+    background-color: $primary-500;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 1.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-picture {
+        margin-top: 1rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.loading {
+    font-size: 1.8rem;
+    color: $primary-500;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.interview-results {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: $surface-200;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.result-card {
+    background-color: $surface-300;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-0.3rem);
+}
+
+.template-name {
+    font-size: 1.8rem;
+    color: $primary-500;
+    margin-bottom: 1.5rem;
+}
+
+.template-note {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    h3 {
+        font-size: 1.8rem;
+        color: $primary-500;
+        margin-block: 1rem;
+        display: inline-block;
+    }
+
+    p{
+        font-size: 1.5rem;
+    }
+}
+
+.parameter-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.parameter-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 0.1rem solid $surface-400;
+}
+
+.parameter-item:last-child {
+    border-bottom: none;
+}
+
+.parameter-question {
+    font-size: 1.4rem;
+    color: $primary-500;
+    flex: 1;
+}
+
+.parameter-value {
+    font-size: 1.4rem;
+    color: $primary-400;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+    .interview-results {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .template-name {
+        font-size: 1.6rem;
+    }
+
+    .parameter-question,
+    .parameter-value {
+        font-size: 1.3rem;
+    }
+}
+
+.template-name {
+    color: $primary-500;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: $primary-500;
+    border-radius: 0.4rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
