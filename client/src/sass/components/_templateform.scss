@@ -1,0 +1,117 @@
+.template-form {
+    max-width: 600px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.template-form__title {
+    font-size: 4rem;
+    color: #343a40;
+    margin-bottom: 3.2rem;
+    text-align: center;
+
+}
+
+.template-form__form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+
+.template-form__label {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.template-form__input {
+    width: 100%;
+    padding: 1rem;
+    // margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.template-form__input:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.template-form__subtitle {
+    font-size: 1.5rem;
+    color: #343a40;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.template-form__parameter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.template-buttons{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-block: 1rem;
+
+    button{
+        font-size: 1.8rem;
+        padding: 1rem;
+        background-color: $surface-300;
+        max-width: 20rem;
+        width: 100%;
+    }
+}
+
+.template-form__button {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.template-form__button--remove {
+    background-color: #dc3545;
+    color: #fff;
+    margin-left: 1rem;
+    padding: 0.8rem;
+    font-size: 1.6rem;
+}
+
+.template-form__button--remove:hover {
+    background-color: #c82333;
+}
+
+.template-form__button--add:hover {
+    background-color: #138496;
+}
+
+.template-form__button--submit:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .template-form {
+        padding: 1.5rem;
+    }
+
+    .template-form__title {
+        font-size: 1.75rem;
+    }
+
+    .template-form__subtitle {
+        font-size: 1.25rem;
+    }
+
+    .template-form__button {
+        padding: 0.5rem 0.75rem;
+    }
+}
