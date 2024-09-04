@@ -13,7 +13,7 @@ router.post("/login", wrapAsync(async (req, res) => {
     if (!user) {
         const newUser = new User({ name, emailId, picture });
         await newUser.save();
-        return res.status(200).json({ success: true, message: "Welcome to Peer Link" });
+        return res.status(200).json({ success: true, message: "Welcome to Recruit Ease" });
     }
 
     return res.status(200).json({ success: true, message: "Logged In Successfully!" });
