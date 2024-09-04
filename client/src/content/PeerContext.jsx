@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useRef, useEffect } from "react";
+import React, { createContext, useContext, useRef, useState } from "react";
 import { useSocketContext } from "./socketContext";
+import { toast } from "react-toastify";
 
 const PeerContext = createContext(null);
 
@@ -8,12 +9,16 @@ export const PeerProvider = ({ children }) => {
     const userStream = useRef();
     const otherUser = useRef();
     const partnerVideo = useRef();
+    const sendChannel = useRef();
+    const [messages, setMessages] = useState([]);
 
     const { socket } = useSocketContext();
 
     function callUser(userId) {
         peerRef.current = createPeer(userId);
         userStream.current.getTracks().forEach(track => peerRef.current.addTrack(track, userStream.current));
+        sendChannel.current = peerRef.current.createDataChannel("message");
+        sendChannel.current.onmessage = handleRecieveMessage;
     }
 
     function createPeer(userId) {
@@ -52,6 +57,11 @@ export const PeerProvider = ({ children }) => {
 
     function handleRecieveCall(incoming) {
         peerRef.current = createPeer();
+        peerRef.current.ondatachannel = (e) => {
+            sendChannel.current = e.channel;
+            sendChannel.current.onmessage = handleRecieveMessage;
+        }
+
         const desc = new RTCSessionDescription(incoming.sdp);
         peerRef.current.setRemoteDescription(desc).then(() => {
             userStream.current.getTracks().forEach(track => peerRef.current.addTrack(track, userStream.current));
@@ -67,6 +77,26 @@ export const PeerProvider = ({ children }) => {
             }
             socket.emit("answer", payload);
         })
+    }
+
+    function handleRecieveMessage(e) {
+        const message = JSON.parse(e.data);
+        console.log(message);
+        setMessages(prevMessages => [...prevMessages, message]);
+        toast(`${message.name}
+            ${message.content}`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+        });
+    }
+
+    function sendMessage(data) {
+        sendChannel.current.send(JSON.stringify(data));
     }
 
     function handleAnswer(message) {
@@ -105,7 +135,7 @@ export const PeerProvider = ({ children }) => {
             videoSender.replaceTrack(screenTrack);
         }
 
-        return {screenTrack,stream};
+        return { screenTrack, stream };
     }
 
     async function stopScreenShare() {
@@ -120,7 +150,7 @@ export const PeerProvider = ({ children }) => {
     };
 
     return (
-        <PeerContext.Provider value={{ userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen,stopScreenShare }}>
+        <PeerContext.Provider value={{peerRef, userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen, stopScreenShare, messages, setMessages, sendMessage }}>
             {children}
         </PeerContext.Provider>
     )
