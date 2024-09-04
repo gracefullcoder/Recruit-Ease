@@ -5,8 +5,8 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-block-start: 5rem;
-    padding: 2rem;
+    margin-block: 5rem 8rem;
+    padding: 2rem 0.8rem;
 
 
     .user{
@@ -30,8 +30,12 @@
     display: flex;
     gap: 2rem;
     justify-content: center;
-    align-items: center;
-    margin-block-start: 10rem;
+    align-items: flex-start;
+    position: fixed;
+    bottom: 2rem;
+    margin-inline: auto;
+    width: 100%;
+    flex-wrap: wrap-reverse;
 
     .media-button{
         font-size: 3rem;
@@ -39,5 +43,9 @@
         padding: 1.5rem;
         border-radius: 50%;
         border: 1px solid white;
+    }
+
+    .uil-phone-slash{
+        color: red;
     }
 }

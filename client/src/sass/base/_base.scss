@@ -107,13 +107,12 @@ address {
 }
 
 html {
-    font-size: 10px;
+    font-size: 62.5%;
     scroll-behavior: smooth;
     font-family: $fontFamily-text;
 }
 
 body {
-    font-size: 62.5%;
     font-family: $fontFamily-text;
     font-weight: 700;
     background-color: $surface-mixed-100;
