@@ -1,12 +1,13 @@
 .join-room {
     width: 100%;
-    min-height: 100vh;
     display: grid;
     place-items: center;
+    margin: 7rem 0;
 
     .join-form {
         margin: 1rem;
-        width: 42rem;
+        width: 100%;
+        max-width: 42rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,11 +41,51 @@
                 font-size: 2rem;
                 letter-spacing: 1px;
                 color: white;
+                text-align: center;
+            }
+
+            .radio-group {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    font-size: 1.8rem;
+                    color: white;
+                }
+
+                input[type="radio"] {
+                    width: 2rem;
+                    height: 2rem;
+                    accent-color: $primary-500;
+                }
             }
 
             button {
                 margin-block-start: 1rem;
+                padding: 1rem 2rem;
+                background-color: $primary-500;
+                color: white;
+                border: none;
+                border-radius: 2.5rem;
+                font-size: 2rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: darken($primary-500, 10%);
+                }
             }
         }
     }
+}
+
+.loading{
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
 }
