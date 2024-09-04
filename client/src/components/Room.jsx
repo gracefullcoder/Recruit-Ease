@@ -1,34 +1,45 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo, useMemo } from 'react';
 import { useSocketContext } from '../content/socketContext';
 import { usePeer } from '../content/PeerContext';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import Chat from './Chat';
+import { useAuth0 } from '@auth0/auth0-react';
+import RecruiterFeatures from './Meeting/RecruiterFeatures';
 
 function Room() {
     const userVideo = useRef();
     const screenRef = useRef();
     const { socket } = useSocketContext();
-    const { userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen, stopScreenShare } = usePeer();
-    const { roomId, emailId } = useParams();
-    const [mediaOptions, setMediaOptions] = useState({ mic: true, video: true, screen: false });
+    const { peerRef, userStream, otherUser, partnerVideo, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg, shareScreen, stopScreenShare } = usePeer();
+    const { roomId } = useParams();
+    const [mediaOptions, setMediaOptions] = useState({ mic: true, video: true, screen: false, chat: false });
     const [isRemoteUser, setIsRemoteUser] = useState(false);
-    // const [remoteUserMail,setRemoteUserMail] = useState("");
+    const navigate = useNavigate();
+    const { user, isAuthenticated } = useAuth0();
+    const { emailId, userName } = useMemo(() => (isAuthenticated && { emailId: user.email, userName: user.name }), [user]);
+    const location = useLocation();
+    const joinAs = useRef(location.state?.joinAs || 'candidate');
+    console.log(joinAs,otherUser);
 
     useEffect(() => {
         const joinMeeting = async () => {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
             userVideo.current.srcObject = stream;
             userStream.current = stream;
+            userVideo.current.onloadedmetadata = () => {
+                userVideo.current.play();
+            };
 
-            socket.emit("join room", { roomId, emailId });
+            socket.emit("join room", { roomId, emailId, userName });
 
-            socket.on('other user', ({ userId, emailId }) => {
+            socket.on('other user', ({ userId, emailId, userName }) => {
                 callUser(userId);
-                otherUser.current = { userId, emailId };
+                otherUser.current = { userId, emailId, userName };
                 setIsRemoteUser(true);
             });
 
-            socket.on("user joined", ({ userId, emailId }) => {
-                otherUser.current = { userId, emailId };
+            socket.on("user joined", ({ userId, emailId, userName }) => {
+                otherUser.current = { userId, emailId, userName };
                 setIsRemoteUser(true);
             });
 
@@ -37,15 +48,30 @@ function Room() {
             socket.on("answer", handleAnswer);
 
             socket.on("ice-candidate", handleNewICECandidateMsg);
+
+            socket.on("user leaved", () => setIsRemoteUser(false));
         }
 
         joinMeeting();
-    }, [socket, roomId, callUser, handleRecieveCall, handleAnswer, handleNewICECandidateMsg]);
 
-    const toggleMediaOptions = async (option) => {
+        return () => {
+            if (userStream.current) {
+                userStream.current.getTracks().forEach(track => track.stop());
+            }
+            if (peerRef.current) {
+                peerRef.current.close();
+                peerRef.current = null;
+            }
+            socket.disconnect();
+        }
+    }, []);
+
+    const toggleMediaOptions = useCallback(async (option) => {
         let updatedOptions = {};
-
-        if (option === "mic" && userStream.current) {
+        if (option == "chat") {
+            updatedOptions.chat = !mediaOptions.chat;
+        }
+        else if (option === "mic" && userStream.current) {
             const micEnabled = !mediaOptions.mic;
             userStream.current.getAudioTracks().forEach(track => {
                 track.enabled = micEnabled;
@@ -53,7 +79,7 @@ function Room() {
             updatedOptions.mic = micEnabled;
         }
 
-        if (option === "video" && userStream.current) {
+        else if (option === "video" && userStream.current) {
             const videoEnabled = !mediaOptions.video;
             userStream.current.getVideoTracks().forEach(track => {
                 track.enabled = videoEnabled;
@@ -61,7 +87,7 @@ function Room() {
             updatedOptions.video = videoEnabled;
         }
 
-        if (option === "screen" && userStream.current) {
+        else if (option === "screen" && userStream.current) {
             if (!mediaOptions.screen) {
                 const { screenTrack, stream } = await shareScreen();
                 screenRef.current = screenTrack;
@@ -82,21 +108,23 @@ function Room() {
         }
 
         setMediaOptions(prev => ({ ...prev, ...updatedOptions }));
-    };
+    }, [mediaOptions]);
 
     return (
-        <div>
+        <>
             <div className="room">
-                <div className='user'>
-                    <video autoPlay ref={userVideo} className='video-container' muted />
-                    <p>{emailId}</p>
-                </div>
                 {isRemoteUser &&
                     <div className='user'>
                         <video autoPlay ref={partnerVideo} className='video-container' />
-                        <p>{otherUser.current.emailId}</p>
+                        <p>{otherUser.current.userName}</p>
                     </div>}
+                <div className='user'>
+                    <video autoPlay ref={userVideo} muted className='video-container' />
+                    <p>{userName}</p>
+                </div>
             </div>
+
+            {joinAs.current === "recruiter" && <RecruiterFeatures user={user} otherUser={otherUser}/>}
 
             <div className="meeting-options">
                 {mediaOptions.mic ?
@@ -115,9 +143,16 @@ function Room() {
                     :
                     <i className="uil uil-desktop-slash media-button" onClick={() => toggleMediaOptions("screen")}></i>
                 }
+
+                <i className="uil uil-comment-alt media-button" onClick={() => toggleMediaOptions("chat")}></i>
+
+                <i className="uil uil-phone-slash media-button" onClick={() => navigate("/")}></i>
+
+                {mediaOptions.chat && <Chat userName={emailId} />}
+
             </div>
-        </div>
+        </>
     );
 }
 
-export default Room;
+export default memo(Room);

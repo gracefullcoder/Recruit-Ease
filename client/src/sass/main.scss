@@ -1,6 +1,13 @@
 @import "./base/base";
 
 
+//components
+@import "./components/navbar";
+@import "./components/templateform";
+
 //sections
 @import "./section/JoinRoom.scss";
 @import "./section/room";
+@import "./section/chat";
+@import "./section/dashboard";
+@import "./section/templateselection";

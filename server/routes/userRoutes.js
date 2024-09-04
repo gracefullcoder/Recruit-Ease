@@ -27,6 +27,7 @@ router.post("/user", wrapAsync(async (req, res) => {
         })
         .populate({
             path: 'interviews',
+            options: { sort: { createdAt: -1 } },
             populate: {
                 path: 'result.template',
                 model: 'Template'
@@ -68,10 +69,30 @@ router.post("/interview/:id", wrapAsync(async (req, res) => {
     const { id } = req.params;
     const { templateId, parameterValues } = req.body;
     console.log(parameterValues, templateId);
-    const updateDetails = await Interview.findOneAndUpdate({ _id: id, "result.template": templateId }, { $set: { "result.$.parameterValues": parameterValues } }, { new: true });
-    console.log(updateDetails);
+    if (templateId == true) {
+        const updateDetails = await Interview.findOneAndUpdate({ _id: id }, { overallNote: parameterValues }, { new: true });
+        console.log(updateDetails);
+    }
+    else if (typeof (parameterValues) == "string") {
+        const updateDetails = await Interview.findOneAndUpdate({ _id: id, "result.template": templateId }, { $set: { "result.$.note": parameterValues } }, { new: true });
+        console.log(updateDetails);
+    } else {
+        const updateDetails = await Interview.findOneAndUpdate({ _id: id, "result.template": templateId }, { $set: { "result.$.parameterValues": parameterValues } }, { new: true });
+        console.log(updateDetails);
+    }
     res.status(200).json({ success: true, message: "Data Saved" });
 }))
+
+
+router.get("/interview/:id", wrapAsync(async (req, res) => {
+    const { id } = req.params;
+    const { templateId, parameterValues } = req.body;
+    console.log(parameterValues, templateId);
+    const interviewDetails = await Interview.findById(id);
+    res.status(200).json({ success: true, message: interviewDetails });
+}))
+
+
 
 module.exports = router;
 
