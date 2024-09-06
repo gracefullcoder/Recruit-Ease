@@ -1,4 +1,4 @@
-.room{
+.room {
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
@@ -9,7 +9,7 @@
     padding: 2rem 0.8rem;
 
 
-    .user{
+    .user {
         width: 100%;
         max-width: 60rem;
         text-align: center;
@@ -18,7 +18,7 @@
         line-height: 3rem;
     }
 
-    .video-container{
+    .video-container {
         width: 100%;
         height: auto;
         border: 5px solid black;
@@ -26,7 +26,7 @@
     }
 }
 
-.meeting-options{
+.meeting-options {
     display: flex;
     gap: 2rem;
     justify-content: center;
@@ -37,7 +37,7 @@
     width: 100%;
     flex-wrap: wrap-reverse;
 
-    .media-button{
+    .media-button {
         font-size: 3rem;
         cursor: pointer;
         padding: 1.5rem;
@@ -45,7 +45,26 @@
         border: 1px solid white;
     }
 
-    .uil-phone-slash{
+    .uil-phone-slash {
         color: red;
     }
+}
+
+@media (max-width: 400px) {
+    .meeting-options {
+        gap: 1.3rem;
+        bottom: 1rem;
+        flex-wrap: wrap;
+
+        .media-button {
+            font-size: 2.5rem;
+            padding: 1rem;
+        }
+    
+        .uil-phone-slash {
+            font-size: 2.5rem;
+        }
+    }
+
+    
 }

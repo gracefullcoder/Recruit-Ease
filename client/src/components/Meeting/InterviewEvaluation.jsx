@@ -6,7 +6,7 @@ import { toastMessage } from "../../helperFunction";
 const InterviewEvaluation = ({ interviewId, templates }) => {
     const [evaluation, setEvaluation] = useState({});
     const [overallNote, setOverallNote] = useState('');
-    const [time, setTime] = useState(templates.map((template) => ({})));
+    const [time, setTime] = useState(new Map());
 
     useEffect(() => {
         if (templates.length > 0) {
@@ -14,7 +14,8 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
                 acc[template._id] = {
                     templateId: template._id,
                     parameterValues: Array(template.parameters.length).fill(0),
-                    note: ''
+                    note: '',
+                    time: template.expectedDuration * 60
                 };
                 return acc;
             }, {});
@@ -70,7 +71,7 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
     const handleSaveOverallNote = async () => {
         try {
             const updatedDetails = await axios.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/interview/${interviewId}`,
-                { templateId:true, parameterValues: overallNote })
+                { templateId: true, parameterValues: overallNote })
 
             console.log(updatedDetails.data);
 
@@ -82,6 +83,41 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
             alert('Failed to save overall note');
         }
     };
+
+    const startTimer = async (templateId) => {
+        let interval = setInterval(() => {
+            const oldTime = evaluation[templateId].time;
+            if(oldTime > 0) {
+                setEvaluation((prev) => {
+                    return { ...prev, [templateId]: { ...prev[templateId], time: oldTime - 1 } }
+                })
+            }else{
+                const intervalId = time.map(templateId);
+                clearInterval(intervalId);
+            }
+            
+        }, 1000);
+
+        time.set(templateId,interval);
+    }
+
+    const stopTimer = async (templateId) => {
+        let interval = setInterval(() => {
+            const oldTime = evaluation[templateId].time;
+            if(oldTime > 0) {
+                setEvaluation((prev) => {
+                    return { ...prev, [templateId]: { ...prev[templateId], time: oldTime - 1 } }
+                })
+            }else{
+                const intervalId = time.map(templateId);
+                clearInterval(intervalId);
+            }
+            
+        }, 1000);
+
+        time.set(templateId,interval);
+    }
+
 
     // const handleSubmit = async () => {
     //     try {

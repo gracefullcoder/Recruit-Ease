@@ -115,7 +115,7 @@ function Room() {
             <div className="room">
                 {isRemoteUser &&
                     <div className='user'>
-                        <video autoPlay ref={partnerVideo} className='video-container' />
+                        <video autoPlay controls ref={partnerVideo} className='video-container' />
                         <p>{otherUser.current.userName}</p>
                     </div>}
                 <div className='user'>
