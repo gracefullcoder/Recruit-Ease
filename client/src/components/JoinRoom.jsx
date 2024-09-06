@@ -67,10 +67,10 @@ function JoinRoom() {
                             <input type="radio" name="joinAs" value="candidate" onChange={handleInputChange} />
                             Candidate
                         </label>
-                        <label>
+                        {/* <label>
                             <input type="radio" name="joinAs" value="normal" onChange={handleInputChange} />
                             Normal Talk
-                        </label>
+                        </label> */}
                     </div>
 
                     <h1 className='headline-4'>Room Id:</h1>

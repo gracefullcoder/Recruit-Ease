@@ -3,6 +3,7 @@
     display: grid;
     place-items: center;
     margin: 7rem 0;
+    padding-inline: 1rem;
 
     .join-form {
         margin: 1rem;
@@ -47,7 +48,8 @@
             .radio-group {
                 width: 100%;
                 display: flex;
-                justify-content: space-around;
+                justify-content: center;
+                gap: 1.6rem;
                 align-items: center;
 
                 label {
@@ -88,4 +90,11 @@
     display: grid;
     place-items: center;
     font-size: 2rem;
+}
+
+
+@media(max-width:400px){
+    .join-room .join-form .form-input{
+        padding :2rem 1.5rem 4rem 1.5rem;
+    }
 }
