@@ -32,22 +32,25 @@ app.use(cors(corsOptions));
 const rooms = {};
 const socketToUserMapping = new Map();
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
     socket.on("join room", ({ roomId, emailId, userName }) => {
         console.log("join room -> ", roomId);
         if (rooms[roomId]) {
-            rooms[roomId].push(socket.id);
+            if (rooms[roomId].length == 2) {
+                socket.emit("room filled", { success: false, message: "Room is filled, select different room Id" })
+            } else {
+                rooms[roomId].push(socket.id);
+                socketToUserMapping.set(socket.id, { emailId, roomId, userName });
+                const otherUser = rooms[roomId].find(id => id !== socket.id);
+                const otherUserDetails = socketToUserMapping.get(otherUser);
+                if (otherUser) {
+                    socket.emit("other user", { userId: otherUser, emailId: otherUserDetails.emailId, userName: otherUserDetails.userName });
+                    socket.to(otherUser).emit("user joined", { userId: socket.id, emailId, userName });
+                }
+            }
         } else {
             rooms[roomId] = [socket.id];
-        }
-
-        socketToUserMapping.set(socket.id, { emailId, roomId, userName });
-
-        const otherUser = rooms[roomId].find(id => id !== socket.id);
-        const otherUserDetails = socketToUserMapping.get(otherUser);
-        if (otherUser) {
-            socket.emit("other user", { userId: otherUser, emailId: otherUserDetails.emailId, userName: otherUserDetails.userName });
-            socket.to(otherUser).emit("user joined", { userId: socket.id, emailId, userName });
+            socketToUserMapping.set(socket.id, { emailId, roomId, userName });
         }
     });
 
@@ -66,15 +69,24 @@ io.on("connection", socket => {
 
     socket.on("disconnect", () => {
         const userId = socket.id;
-        const { roomId } = socketToUserMapping.get(userId);
 
-        rooms[roomId] = rooms[roomId].filter(id => id != userId);
-        io.to(rooms[roomId]).emit("user leaved");
-        socketToUserMapping.delete(userId);
+        if (socketToUserMapping.has(userId)) {
+            const { roomId } = socketToUserMapping.get(userId);
+
+            rooms[roomId] = rooms[roomId].filter(id => id != userId);
+            io.to(rooms[roomId]).emit("user leaved");
+            socketToUserMapping.delete(userId);
+        }
     })
 });
 
 app.use("/", userRouter);
+
+app.use((err, req, res, next) => {
+    console.log(err);
+    const { status = 500, message = "Internal Server Error" } = err;
+    res.status(status).json({ succes: false, message })
+})
 
 
 server.listen(8000, () => console.log('server is running on port 8000'));

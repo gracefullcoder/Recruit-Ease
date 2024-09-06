@@ -5,6 +5,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Chat from './Chat';
 import { useAuth0 } from '@auth0/auth0-react';
 import RecruiterFeatures from './Meeting/RecruiterFeatures';
+import { toastMessage } from '../helperFunction';
 
 function Room() {
     const userVideo = useRef();
@@ -31,6 +32,11 @@ function Room() {
             };
 
             socket.emit("join room", { roomId, emailId, userName });
+
+            socket.on("room filled",(data) => {
+                toastMessage(data);
+                navigate("/");
+            })
 
             socket.on('other user', ({ userId, emailId, userName }) => {
                 callUser(userId);
