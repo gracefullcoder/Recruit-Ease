@@ -3,7 +3,10 @@ import React from 'react';
 const ParameterRating = ({ question, value, onChange }) => {
     return (
         <div className="parameter-rating">
-            <p>{question}</p>
+            <div className="parameter-rating__header">
+                <p>{question}</p>
+                <span>{value}<small>/10</small></span>
+            </div>
             <input
                 type="range"
                 min="0"
@@ -11,7 +14,10 @@ const ParameterRating = ({ question, value, onChange }) => {
                 value={value}
                 onChange={(e) => onChange(Number(e.target.value))}
             />
-            <span>{value}/10</span>
+            <div className="parameter-rating__scale">
+                <span>Low</span>
+                <span>Strong</span>
+            </div>
         </div>
     );
 };

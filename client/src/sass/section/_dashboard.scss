@@ -1,10 +1,9 @@
 .dashboard {
-    max-width: 120rem;
+    max-width: 124rem;
     margin: 0 auto;
     padding: 2rem;
-    margin-block: 5rem 2rem;
-    background-color: $surface-mixed-100;
-    color: $primary-500;
+    margin-block: 4rem 2rem;
+    color: $text-100;
 }
 
 .header {
@@ -16,7 +15,7 @@
 
 .title {
     font-size: 2.4rem;
-    color: $primary-400;
+    color: $text-100;
 }
 
 .profile-picture {
@@ -30,34 +29,36 @@
 }
 
 .section-title {
-    font-size: 2rem;
-    color: $primary-500;
+    font-size: 2.6rem;
+    color: $text-100;
     margin-bottom: 2rem;
-    border-bottom: 0.2rem solid $surface-300;
+    border-bottom: 0.2rem solid $border-soft;
     padding-bottom: 1rem;
 }
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));
     gap: 2rem;
 }
 
 .card {
-    background-color: $surface-200;
-    border-radius: 0.8rem;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    transition: transform 0.3s ease;
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid $border-soft;
+    border-radius: 2rem;
+    box-shadow: $shadow-soft;
+    padding: 2.4rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-0.5rem);
+    border-color: rgba(99, 102, 241, 0.35);
 }
 
 .card-title {
-    font-size: 1.8rem;
-    color: $primary-400;
+    font-size: 2rem;
+    color: $text-100;
     margin-bottom: 1rem;
 }
 
@@ -68,39 +69,40 @@
 }
 
 .card-list li {
-    font-size: 1.4rem;
-    color: $primary-600;
-    margin-bottom: 0.5rem;
+    font-size: 1.45rem;
+    color: $text-200;
+    margin-bottom: 0.8rem;
 }
 
 .card-text {
-    font-size: 1.4rem;
-    color: $primary-600;
-    margin-bottom: 0.5rem;
+    font-size: 1.45rem;
+    color: $text-200;
+    margin-bottom: 0.8rem;
 }
 
 .button {
-    background-color: $primary-500;
+    background: linear-gradient(135deg, $primary-100, $primary-200);
     color: #fff;
     border: none;
-    border-radius: 0.4rem;
-    padding: 1rem 1.5rem;
-    font-size: 1.4rem;
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.6rem;
+    font-size: 1.45rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .button:hover {
-    background-color: $primary-200;
+    transform: translateY(-0.2rem);
+    opacity: 0.95;
 }
 
 .button-add {
-    background-color: $primary-400;
+    background: linear-gradient(135deg, $accent-100, $accent-200);
     margin-top: 2rem;
 }
 
 .button-add:hover {
-    background-color: $primary-500;
+    opacity: 0.95;
 }
 
 @media (max-width: 768px) {
@@ -124,7 +126,7 @@
 
 .loading {
     font-size: 1.8rem;
-    color: $primary-500;
+    color: $text-100;
     text-align: center;
     margin-top: 5rem;
 }
@@ -132,17 +134,17 @@
 .interview-results {
     margin-top: 3rem;
     padding: 2rem;
-    background-color: $surface-200;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1.6rem;
+    border: 1px solid $border-soft;
 }
 
 .result-card {
-    background-color: $surface-300;
-    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 1.4rem;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.2);
+    border: 1px solid $border-soft;
     transition: transform 0.3s ease;
 }
 
@@ -152,7 +154,7 @@
 
 .template-name {
     font-size: 1.8rem;
-    color: $primary-500;
+    color: $text-100;
     margin-bottom: 1.5rem;
 }
 
@@ -161,14 +163,15 @@
     gap: 0.5rem;
     flex-wrap: wrap;
     align-items: center;
+
     h3 {
         font-size: 1.8rem;
-        color: $primary-500;
+        color: $text-100;
         margin-block: 1rem;
         display: inline-block;
     }
 
-    p{
+    p {
         font-size: 1.5rem;
     }
 }
@@ -192,7 +195,7 @@
 
 .parameter-question {
     font-size: 1.4rem;
-    color: $primary-500;
+    color: $text-200;
     flex: 1;
 }
 
@@ -223,7 +226,7 @@
 }
 
 .template-name {
-    color: $primary-500;
+    color: $text-100;
     font-size: 1.6rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
@@ -232,7 +235,7 @@
 p {
     font-size: 1.4rem;
     line-height: 1.6;
-    color: $primary-500;
+    color: $text-200;
     border-radius: 0.4rem;
     white-space: pre-wrap;
     word-wrap: break-word;

@@ -1,15 +1,16 @@
 .template-form {
     max-width: 600px;
     margin: 5rem auto;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 2.4rem;
+    background: rgba(15, 23, 42, 0.84);
+    border-radius: 2rem;
+    border: 1px solid $border-soft;
+    box-shadow: $shadow-soft;
 }
 
 .template-form__title {
     font-size: 4rem;
-    color: #343a40;
+    color: $text-100;
     margin-bottom: 3.2rem;
     text-align: center;
 
@@ -22,28 +23,29 @@
 }
 
 .template-form__label {
-    color: #495057;
+    color: $text-200;
     margin-bottom: 1rem;
 }
 
 .template-form__input {
     width: 100%;
-    padding: 1rem;
-    // margin-top: 1rem;
-    border-radius: 0.5rem;
-    border: 2px solid #ced4da;
+    padding: 1.2rem 1.4rem;
+    border-radius: 1.2rem;
+    border: 1px solid $border-soft;
+    background: rgba(255, 255, 255, 0.04);
+    color: $text-100;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .template-form__input:focus {
-    border-color: #80bdff;
+    border-color: $primary-200;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.2);
 }
 
 .template-form__subtitle {
     font-size: 1.5rem;
-    color: #343a40;
+    color: $text-100;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -54,18 +56,21 @@
     margin-bottom: 2rem;
 }
 
-.template-buttons{
+.template-buttons {
     display: flex;
     gap: 2rem;
     justify-content: center;
     margin-block: 1rem;
 
-    button{
+    button {
         font-size: 1.8rem;
         padding: 1rem;
-        background-color: $surface-300;
+        background: rgba(255, 255, 255, 0.05);
+        color: $text-100;
+        border: 1px solid $border-soft;
         max-width: 20rem;
         width: 100%;
+        border-radius: 1.2rem;
     }
 }
 
@@ -79,11 +84,12 @@
 }
 
 .template-form__button--remove {
-    background-color: #dc3545;
+    background-color: $danger-100;
     color: #fff;
     margin-left: 1rem;
     padding: 0.8rem;
     font-size: 1.6rem;
+    border-radius: 1rem;
 }
 
 .template-form__button--remove:hover {

@@ -13,7 +13,7 @@ const Navbar = () => {
     useEffect(() => {
         if (!isLoading && isAuthenticated && !hasLoggedIn.current) {
             const loginUser = async () => {
-                try {   
+                try {
                     const response = await axios.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/login`, {
                         emailId: user.email,
                         name: user.name,
@@ -41,7 +41,13 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-logo">
-                    <Link to="/" className="logo-link">Recruit Ease</Link>
+                    <Link to="/" className="logo-link">
+                        <span className="logo-mark">RE</span>
+                        <span className="logo-text">
+                            <strong>Recruit Ease</strong>
+                            <small>Interview intelligence platform</small>
+                        </span>
+                    </Link>
                 </div>
 
                 <div className="navbar-links">

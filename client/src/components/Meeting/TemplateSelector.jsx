@@ -44,39 +44,74 @@ const TemplateSelector = ({ onTemplatesSelected, otherUser }) => {
         onTemplatesSelected(selectedTemplates);
     };
 
+    const selectedQuestionsCount = selectedTemplates.reduce((count, template) => count + template.parameters.length, 0);
+
     return (
         <div className="template-selector">
-            <div>
-                <h2>Candidate Details</h2>
-                {otherUser.current ?
+            <section className="panel-section panel-section--candidate">
+                <span className="panel-label">Candidate details</span>
+                {otherUser.current ? (
                     <>
-                        <p>Name : {otherUser.current.userName}</p>
-                        <p>Email : {otherUser.current.emailId}</p>
+                        <h3>{otherUser.current.userName}</h3>
+                        <p>{otherUser.current.emailId}</p>
+                        <span className="panel-status is-live">Ready for interview</span>
                     </>
-                    :
-                    <p>No Candidate</p>
-                }
-            </div>
+                ) : (
+                    <>
+                        <h3>Waiting for candidate</h3>
+                        <p>The room is ready. Once the candidate joins, you can start the structured interview.</p>
+                        <span className="panel-status">Standby</span>
+                    </>
+                )}
+            </section>
 
-            <h2>Select Templates</h2>
-            <ul>
-                {templates.map(template => (
-                    <li key={template._id}>
-                        <label>
+            <section className="panel-section">
+                <div className="panel-heading-row">
+                    <div>
+                        <span className="panel-label">Evaluation templates</span>
+                        <h3>Select scorecards</h3>
+                    </div>
+                    <span className="panel-count">{selectedTemplates.length} selected</span>
+                </div>
+
+                <ul className="template-selector__list">
+                    {templates.map(template => (
+                        <li key={template._id}>
+                            <label className="template-option">
                             <input
                                 type="checkbox"
                                 checked={selectedTemplates.some(selected => selected._id === template._id)}
                                 onChange={() => handleTemplateToggle(template)}
                             />
-                            {template.name}
-                        </label>
-                    </li>
-                ))}
-            </ul>
+                                <div className="template-option__content">
+                                    <strong>{template.name}</strong>
+                                    <span>{template.parameters.length} criteria • {template.expectedDuration} min expected</span>
+                                </div>
+                            </label>
+                        </li>
+                    ))}
+                </ul>
+            </section>
 
-            <h2>Previous Interview Id:</h2>
-            <input type="text" className='pastinterview' placeholder='Enter Past Interview Id to load previous meet' />
-            <button onClick={handleSubmit}>Start Interview</button>
+            <section className="panel-section">
+                <span className="panel-label">Previous interview reference</span>
+                <input
+                    type="text"
+                    className='pastinterview'
+                    placeholder='Optional interview ID for future reuse'
+                    value={pastinterview}
+                    onChange={(event) => setPastInterview(event.target.value)}
+                />
+                <p className="panel-hint">Keep a past interview ID for manual reference while running the session.</p>
+            </section>
+
+            <div className="panel-footer">
+                <div className="panel-footer__summary">
+                    <span>Scoring coverage</span>
+                    <strong>{selectedQuestionsCount} total criteria</strong>
+                </div>
+                <button onClick={handleSubmit}>Start Interview Evaluation</button>
+            </div>
         </div>
     );
 };

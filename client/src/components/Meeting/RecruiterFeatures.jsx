@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TemplateSelector from './TemplateSelector';
 import InterviewEvaluation from './InterviewEvaluation';
 import axios from 'axios';
@@ -33,7 +33,32 @@ function RecruiterFeatures({ user, otherUser }) {
 
   return (
     <>
-      <div className={`recruiter-options ${!evalToggler && "remove"}`}>
+      <aside className={`recruiter-options ${!evalToggler && "remove"}`}>
+        <div className="recruiter-options__header">
+          <div>
+            <span className="panel-eyebrow">Recruiter workspace</span>
+            <h2>{interviewId ? 'Live evaluation panel' : 'Prepare this interview'}</h2>
+            <p>Run structured scoring, centralize notes, and make post-interview decisions faster.</p>
+          </div>
+
+          {evalToggler && (
+            <button type="button" className="toggle-eval" onClick={() => setEvalToggler(prev => !prev)}>
+              <i className="uil uil-times"></i>
+            </button>
+          )}
+        </div>
+
+        <div className="recruiter-options__stats">
+          <div className="workspace-stat">
+            <span>Candidate</span>
+            <strong>{otherUser.current ? 'Connected' : 'Waiting'}</strong>
+          </div>
+          <div className="workspace-stat">
+            <span>Templates</span>
+            <strong>{selectedTemplates.length}</strong>
+          </div>
+        </div>
+
         {!interviewId && (
           <TemplateSelector onTemplatesSelected={handleTemplatesSelected} otherUser={otherUser} />
         )}
@@ -41,12 +66,13 @@ function RecruiterFeatures({ user, otherUser }) {
         {interviewId && (
           <InterviewEvaluation interviewId={interviewId} templates={selectedTemplates} />
         )}
+      </aside>
 
-        {evalToggler && <i className="uil uil-times toggle-eval" onClick={(e) => setEvalToggler(prev => !prev)}></i>}
-
-      </div>
-
-      {!evalToggler && <i className="uil uil-bars toggle-eval" onClick={(e) => setEvalToggler(prev => !prev)}></i>}
+      {!evalToggler && (
+        <button type="button" className="toggle-eval toggle-eval--open" onClick={() => setEvalToggler(prev => !prev)}>
+          <i className="uil uil-briefcase-alt"></i>
+        </button>
+      )}
     </>
   )
 }

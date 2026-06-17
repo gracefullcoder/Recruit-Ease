@@ -1,100 +1,201 @@
 .join-room {
-    width: 100%;
+    max-width: 128rem;
+    margin: 0 auto;
+    min-height: calc(100vh - 8rem);
     display: grid;
-    place-items: center;
-    margin: 7rem 0;
-    padding-inline: 1rem;
+    grid-template-columns: minmax(0, 1.3fr) minmax(34rem, 48rem);
+    gap: 3rem;
+    align-items: center;
+    padding: 4rem 2rem 6rem;
+}
 
-    .join-form {
-        margin: 1rem;
-        width: 100%;
-        max-width: 42rem;
-        display: flex;
-        flex-direction: column;
+.join-hero {
+    &__eyebrow {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        border-radius: 3.5rem;
-        background-color: $surface-300;
+        gap: 0.8rem;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: $accent-200;
+        margin-bottom: 1.6rem;
+    }
 
-        .form-heading {
-            padding: 3rem;
-            background-color: $surface-200;
-            width: 100%;
-            border-radius: 3.5rem 3.5rem 0rem 0rem;
-            text-align: center;
-            letter-spacing: 2.5px;
-        }
+    &__content {
+        max-width: 74rem;
+    }
 
-        .form-input {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 3rem 4rem 3rem;
+    .headline-2 {
+        max-width: 72rem;
+        margin-bottom: 2rem;
+        line-height: 1.05;
+    }
 
-            input {
-                height: 6rem;
-                background-color: $surface-200;
-                border-radius: 5rem;
-                padding: 1rem 3rem;
-                font-size: 2rem;
-                letter-spacing: 1px;
-                color: white;
-                text-align: center;
-            }
+    &__text {
+        font-size: 1.8rem;
+        max-width: 66rem;
+        margin-bottom: 3rem;
+    }
 
-            .radio-group {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                gap: 1.6rem;
-                align-items: center;
-
-                label {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    font-size: 1.8rem;
-                    color: white;
-                }
-
-                input[type="radio"] {
-                    width: 2rem;
-                    height: 2rem;
-                    accent-color: $primary-500;
-                }
-            }
-
-            button {
-                margin-block-start: 1rem;
-                padding: 1rem 2rem;
-                background-color: $primary-500;
-                color: white;
-                border: none;
-                border-radius: 2.5rem;
-                font-size: 2rem;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-
-                &:hover {
-                    background-color: darken($primary-500, 10%);
-                }
-            }
-        }
+    &__benefits {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.6rem;
     }
 }
 
-.loading{
+.benefit-card,
+.join-form {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid $border-soft;
+    box-shadow: $shadow-soft;
+}
+
+.benefit-card {
+    padding: 2rem;
+    border-radius: 2rem;
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+.join-form {
+    width: 100%;
+    border-radius: 2.4rem;
+    overflow: hidden;
+
+    .form-heading {
+        padding: 2.4rem 2.4rem 1.2rem;
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    .form-heading__kicker {
+        color: $accent-200;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        letter-spacing: 0.12em;
+    }
+
+    .form-input {
+        padding: 2rem 2.4rem 2.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        h3 {
+            font-size: 1.8rem;
+        }
+    }
+
+    input[type="text"] {
+        background-color: rgba(255, 255, 255, 0.04);
+        color: $text-100;
+        padding: 1.5rem 1.6rem;
+        border-radius: 1.4rem;
+        border: 1px solid $border-soft;
+
+        &:focus {
+            border-color: $primary-200;
+            box-shadow: 0 0 0 0.3rem rgba(99, 102, 241, 0.16);
+        }
+    }
+
+    .radio-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.6rem;
+            color: $text-100;
+            padding: 1.4rem 1.6rem;
+            border-radius: 1.4rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid $border-soft;
+        }
+
+        input[type="radio"] {
+            width: 1.8rem;
+            height: 1.8rem;
+            accent-color: $primary-200;
+        }
+    }
+
+    .input-hint {
+        font-size: 1.3rem;
+        color: $text-300;
+    }
+
+    .feature-points {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        span {
+            padding: 0.9rem 1.2rem;
+            border-radius: 999px;
+            background: rgba(199, 210, 254, 0.08);
+            color: $primary-500;
+            font-size: 1.3rem;
+            border: 1px solid rgba(199, 210, 254, 0.14);
+        }
+    }
+
+    .join-submit {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.loading {
     display: grid;
     place-items: center;
     font-size: 2rem;
 }
 
+@media(max-width:900px) {
+    .join-room {
+        grid-template-columns: 1fr;
+    }
 
-@media(max-width:400px){
-    .join-room .join-form .form-input{
-        padding :2rem 1.5rem 4rem 1.5rem;
+    .join-hero__benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:400px) {
+    .join-room {
+        padding-inline: 1.2rem;
+    }
+
+    .join-room .join-form .form-input {
+        padding: 2rem 1.5rem 2.4rem 1.5rem;
+    }
+
+    .join-form .radio-group {
+        grid-template-columns: 1fr;
     }
 }

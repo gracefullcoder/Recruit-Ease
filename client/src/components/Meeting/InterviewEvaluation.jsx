@@ -6,7 +6,6 @@ import { toastMessage } from "../../helperFunction";
 const InterviewEvaluation = ({ interviewId, templates }) => {
     const [evaluation, setEvaluation] = useState({});
     const [overallNote, setOverallNote] = useState('');
-    const [time, setTime] = useState(new Map());
 
     useEffect(() => {
         if (templates.length > 0) {
@@ -23,12 +22,9 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
         }
     }, [templates]);
 
-    console.log(evaluation);
-
     const handleParameterChange = async (templateId, index, value) => {
         const updatedParameters = evaluation[templateId].parameterValues.map((v, i) => i === index ? value : v)
         const updatedDetails = await axios.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/interview/${interviewId}`, { templateId, parameterValues: updatedParameters })
-        console.log(updatedDetails);
         toastMessage(updatedDetails.data);
 
         setEvaluation((prev) => {
@@ -57,8 +53,6 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
             const updatedDetails = await axios.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/interview/${interviewId}`,
                 { templateId, parameterValues: evaluation[templateId].note })
 
-            console.log(updatedDetails.data);
-
             if (updatedDetails.data.success) {
                 toastMessage(updatedDetails.data);
             }
@@ -73,8 +67,6 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
             const updatedDetails = await axios.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/interview/${interviewId}`,
                 { templateId: true, parameterValues: overallNote })
 
-            console.log(updatedDetails.data);
-
             if (updatedDetails.data.success) {
                 toastMessage(updatedDetails.data);
             }
@@ -84,60 +76,62 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
         }
     };
 
-    const startTimer = async (templateId) => {
-        let interval = setInterval(() => {
-            const oldTime = evaluation[templateId].time;
-            if(oldTime > 0) {
-                setEvaluation((prev) => {
-                    return { ...prev, [templateId]: { ...prev[templateId], time: oldTime - 1 } }
-                })
-            }else{
-                const intervalId = time.map(templateId);
-                clearInterval(intervalId);
-            }
-            
-        }, 1000);
+    const totalParameters = templates.reduce((sum, template) => sum + template.parameters.length, 0);
+    const completedRatings = templates.reduce((sum, template) => {
+        const ratings = evaluation[template._id]?.parameterValues || [];
+        return sum + ratings.filter((value) => value > 0).length;
+    }, 0);
+    const averageScore = totalParameters > 0
+        ? (
+            templates.reduce((sum, template) => {
+                const ratings = evaluation[template._id]?.parameterValues || [];
+                return sum + ratings.reduce((scoreSum, score) => scoreSum + score, 0);
+            }, 0) / totalParameters
+        ).toFixed(1)
+        : '0.0';
 
-        time.set(templateId,interval);
-    }
+    const getTemplateAverage = (templateId) => {
+        const ratings = evaluation[templateId]?.parameterValues || [];
+        if (ratings.length === 0) {
+            return '0.0';
+        }
 
-    const stopTimer = async (templateId) => {
-        let interval = setInterval(() => {
-            const oldTime = evaluation[templateId].time;
-            if(oldTime > 0) {
-                setEvaluation((prev) => {
-                    return { ...prev, [templateId]: { ...prev[templateId], time: oldTime - 1 } }
-                })
-            }else{
-                const intervalId = time.map(templateId);
-                clearInterval(intervalId);
-            }
-            
-        }, 1000);
-
-        time.set(templateId,interval);
-    }
-
-
-    // const handleSubmit = async () => {
-    //     try {
-    //         await Promise.all(Object.values(evaluation).map(({ templateId, parameterValues }) =>
-    //             axios.post(`/api/interview/${interviewId}`, { templateId, parameterValues })
-    //         ));
-    //         await axios.post(`/api/interview/${interviewId}/overall-note`, { overallNote });
-    //         alert('Evaluation submitted successfully');
-    //     } catch (error) {
-    //         console.error('Error submitting evaluation:', error);
-    //         alert('Failed to submit evaluation');
-    //     }
-    // };
+        const total = ratings.reduce((sum, score) => sum + score, 0);
+        return (total / ratings.length).toFixed(1);
+    };
 
     return (
         <div className="interview-evaluation">
-            <h2>Interview Evaluation</h2>
+            <div className="interview-evaluation__intro">
+                <span className="panel-label">Live scorecards</span>
+                <h3>Interview evaluation</h3>
+                <p>Scores save as you rate each parameter, helping you keep a reliable decision trail.</p>
+            </div>
+
+            <div className="interview-overview">
+                <div className="overview-card">
+                    <span>Templates</span>
+                    <strong>{templates.length}</strong>
+                </div>
+                <div className="overview-card">
+                    <span>Rated criteria</span>
+                    <strong>{completedRatings}/{totalParameters}</strong>
+                </div>
+                <div className="overview-card">
+                    <span>Average score</span>
+                    <strong>{averageScore}/10</strong>
+                </div>
+            </div>
+
             {templates.map(template => (
                 <div key={template._id} className="template-evaluation">
-                    <h3>{template.name}</h3>
+                    <div className="template-evaluation__header">
+                        <div>
+                            <h3>{template.name}</h3>
+                            <p>{template.parameters.length} criteria • {template.expectedDuration} min expected duration</p>
+                        </div>
+                        <span className="template-score">{getTemplateAverage(template._id)}/10</span>
+                    </div>
                     {template.parameters.map((param, index) => (
                         <ParameterRating
                             key={index}
@@ -157,6 +151,12 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
                 </div>
             ))}
             <div className="overall-note-container">
+                <div className="panel-heading-row">
+                    <div>
+                        <span className="panel-label">Final summary</span>
+                        <h3>Overall decision note</h3>
+                    </div>
+                </div>
                 <textarea
                     placeholder="Overall notes"
                     value={overallNote}
@@ -164,7 +164,6 @@ const InterviewEvaluation = ({ interviewId, templates }) => {
                 />
                 <button onClick={handleSaveOverallNote} className="button button--small">Save Overall Note</button>
             </div>
-            {/* <button onClick={handleSubmit} className="button button--primary">Submit Evaluation</button> */}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, memo, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { useSocketContext } from '../content/socketContext';
 import { usePeer } from '../content/PeerContext';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -17,10 +17,10 @@ function Room() {
     const [isRemoteUser, setIsRemoteUser] = useState(false);
     const navigate = useNavigate();
     const { user, isAuthenticated } = useAuth0();
-    const { emailId, userName } = useMemo(() => (isAuthenticated && { emailId: user.email, userName: user.name }), [user]);
+    const emailId = isAuthenticated ? user?.email : '';
+    const userName = isAuthenticated ? user?.name : 'You';
     const location = useLocation();
     const joinAs = useRef(location.state?.joinAs || 'candidate');
-    console.log(joinAs,otherUser);
 
     useEffect(() => {
         const joinMeeting = async () => {
@@ -116,47 +116,125 @@ function Room() {
         setMediaOptions(prev => ({ ...prev, ...updatedOptions }));
     }, [mediaOptions]);
 
+    const remoteParticipant = otherUser.current;
+    const controlButtons = [
+        {
+            key: 'mic',
+            icon: mediaOptions.mic ? 'uil-microphone' : 'uil-microphone-slash',
+            label: mediaOptions.mic ? 'Mute mic' : 'Unmute mic',
+            active: mediaOptions.mic
+        },
+        {
+            key: 'video',
+            icon: mediaOptions.video ? 'uil-video' : 'uil-video-slash',
+            label: mediaOptions.video ? 'Stop camera' : 'Start camera',
+            active: mediaOptions.video
+        },
+        {
+            key: 'screen',
+            icon: mediaOptions.screen ? 'uil-airplay' : 'uil-desktop-slash',
+            label: mediaOptions.screen ? 'Stop share' : 'Share screen',
+            active: mediaOptions.screen
+        },
+        {
+            key: 'chat',
+            icon: 'uil-comment-alt',
+            label: mediaOptions.chat ? 'Hide chat' : 'Open chat',
+            active: mediaOptions.chat
+        }
+    ];
+
     return (
         <>
-            <div className="room">
-                {isRemoteUser &&
-                    <div className='user'>
-                        <video autoPlay controls ref={partnerVideo} className='video-container' />
-                        <p>{otherUser.current.userName}</p>
-                    </div>}
-                <div className='user'>
-                    <video autoPlay ref={userVideo} muted className='video-container' />
-                    <p>{userName}</p>
+            <div className="room-shell">
+                <header className="room-header">
+                    <div className="room-header__content">
+                        <span className="room-badge">{joinAs.current === 'recruiter' ? 'Recruiter mode' : 'Candidate mode'}</span>
+                        <h1 className="room-title">Live interview workspace</h1>
+                        <p className="room-subtitle">
+                            Room ID <strong>{roomId}</strong> with {isRemoteUser ? remoteParticipant?.userName : 'waiting participant'}
+                        </p>
+                    </div>
+
+                    <div className="room-header__meta">
+                        <div className="room-stat">
+                            <span>Status</span>
+                            <strong>{isRemoteUser ? 'Connected' : 'Waiting to join'}</strong>
+                        </div>
+                        <div className="room-stat">
+                            <span>Workflow</span>
+                            <strong>{joinAs.current === 'recruiter' ? 'Structured evaluation' : 'Candidate interview'}</strong>
+                        </div>
+                    </div>
+                </header>
+
+                <div className={`room-stage ${joinAs.current === 'recruiter' ? 'room-stage--recruiter' : ''}`}>
+                    <section className="room-grid">
+                        <article className={`user user--remote ${!isRemoteUser ? 'user--placeholder' : ''}`}>
+                            <div className="user__meta">
+                                <div>
+                                    <span className="user__role">Candidate / Recruiter</span>
+                                    <h2>{isRemoteUser ? remoteParticipant?.userName : 'Waiting for participant'}</h2>
+                                </div>
+                                <span className={`user__status ${isRemoteUser ? 'is-live' : ''}`}>{isRemoteUser ? 'Live' : 'Standby'}</span>
+                            </div>
+
+                            {isRemoteUser ? (
+                                <video autoPlay controls ref={partnerVideo} className='video-container' />
+                            ) : (
+                                <div className="video-placeholder">
+                                    <i className="uil uil-user-circle"></i>
+                                    <p>The second participant appears here once they join the room.</p>
+                                </div>
+                            )}
+                        </article>
+
+                        <article className='user user--local'>
+                            <div className="user__meta">
+                                <div>
+                                    <span className="user__role">You</span>
+                                    <h2>{userName}</h2>
+                                </div>
+                                <span className="user__status is-live">Connected</span>
+                            </div>
+                            <video autoPlay ref={userVideo} muted className='video-container' />
+                        </article>
+                    </section>
+
+                    {mediaOptions.chat && (
+                        <aside className="room-chat-panel">
+                            <div className="room-chat-panel__header">
+                                <div>
+                                    <span>Interview chat</span>
+                                    <h3>Candidate communication</h3>
+                                </div>
+                            </div>
+                            <Chat userName={emailId} />
+                        </aside>
+                    )}
+                </div>
+
+                <div className="meeting-options">
+                    {controlButtons.map(({ key, icon, label, active }) => (
+                        <button
+                            key={key}
+                            type="button"
+                            className={`media-button ${active ? 'is-active' : ''}`}
+                            onClick={() => toggleMediaOptions(key)}
+                        >
+                            <i className={`uil ${icon}`}></i>
+                            <span>{label}</span>
+                        </button>
+                    ))}
+
+                    <button type="button" className="media-button media-button--danger" onClick={() => navigate("/")}>
+                        <i className="uil uil-phone-slash"></i>
+                        <span>Leave room</span>
+                    </button>
                 </div>
             </div>
 
             {joinAs.current === "recruiter" && <RecruiterFeatures user={user} otherUser={otherUser}/>}
-
-            <div className="meeting-options">
-                {mediaOptions.mic ?
-                    <i className="uil uil-microphone media-button" onClick={() => toggleMediaOptions("mic")}></i>
-                    :
-                    <i className="uil uil-microphone-slash media-button" onClick={() => toggleMediaOptions("mic")}></i>
-                }
-                {mediaOptions.video ?
-                    <i className="uil uil-video media-button" onClick={() => toggleMediaOptions("video")}></i>
-                    :
-                    <i className="uil uil-video-slash media-button" onClick={() => toggleMediaOptions("video")}></i>
-                }
-
-                {mediaOptions.screen ?
-                    <i className="uil uil-airplay media-button" onClick={() => toggleMediaOptions("screen")}></i>
-                    :
-                    <i className="uil uil-desktop-slash media-button" onClick={() => toggleMediaOptions("screen")}></i>
-                }
-
-                <i className="uil uil-comment-alt media-button" onClick={() => toggleMediaOptions("chat")}></i>
-
-                <i className="uil uil-phone-slash media-button" onClick={() => navigate("/")}></i>
-
-                {mediaOptions.chat && <Chat userName={emailId} />}
-
-            </div>
         </>
     );
 }

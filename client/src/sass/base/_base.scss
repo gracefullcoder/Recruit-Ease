@@ -1,26 +1,37 @@
 /** SCSS DARK THEME PRIMARY COLORS */
-$primary-100: #382bf0;
-$primary-200: #5e43f3;
-$primary-500: #7a5af5;
-$primary-400: #9171f8;
-$primary-500: #a688fa;
-$primary-600: #ba9ffb;
+$primary-100: #4f46e5;
+$primary-200: #6366f1;
+$primary-300: #7c83ff;
+$primary-400: #9ca3ff;
+$primary-500: #c7d2fe;
+$primary-600: #e0e7ff;
+
+$accent-100: #22c55e;
+$accent-200: #34d399;
+$danger-100: #ef4444;
+
+$text-100: #f8fafc;
+$text-200: #cbd5e1;
+$text-300: #94a3b8;
+
+$border-soft: rgba(148, 163, 184, 0.18);
+$shadow-soft: 0 24px 80px rgba(2, 6, 23, 0.45);
 
 /** SCSS DARK THEME SURFACE COLORS */
-$surface-100: #121212;
-$surface-200: #282828;
-$surface-300: #3f3f3f;
-$surface-400: #575757;
-$surface-500: #717171;
-$surface-600: #8b8b8b;
+$surface-100: #050816;
+$surface-200: #0f172a;
+$surface-300: #172033;
+$surface-400: #243045;
+$surface-500: #334155;
+$surface-600: #475569;
 
 /** SCSS DARK THEME MIXED SURFACE COLORS */
-$surface-mixed-100: #1a1625;
-$surface-mixed-200: #2f2b3a;
-$surface-mixed-300: #46424f;
-$surface-mixed-400: #5e5a66;
-$surface-mixed-500: #76737e;
-$surface-mixed-600: #908d96;
+$surface-mixed-100: #081120;
+$surface-mixed-200: #111c31;
+$surface-mixed-300: #1b2842;
+$surface-mixed-400: #263551;
+$surface-mixed-500: #314160;
+$surface-mixed-600: #425373;
 
 
 $fontFamily-main: "Quicksand", serif;
@@ -41,9 +52,6 @@ $fontSize-body-3: 1.8rem;
 $fontSize-body-4: 1.6rem;
 $fontSize-label-1: 1.4rem;
 $fontSize-label-2: 1.2rem;
-
-
-
 
 /*-----------------------------------*\
       #RESET
@@ -115,8 +123,12 @@ html {
 body {
     font-family: $fontFamily-text;
     font-weight: 700;
-    background-color: $surface-mixed-100;
-    color: #ffffff;
+    background:
+        radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(52, 211, 153, 0.12), transparent 24%),
+        linear-gradient(180deg, $surface-100 0%, $surface-mixed-100 48%, #050814 100%);
+    color: $text-100;
+    min-height: 100vh;
 }
 
 h1,
@@ -124,15 +136,23 @@ h2,
 h3,
 h4,
 h5,
-h6,button{
+h6,
+button {
     font-family: $fontFamily-main;
-    font-weight: 300;
-    color: $primary-500;
+    font-weight: 600;
+    color: $text-100;
 }
 
-p,span,div{
+p,
+span,
+div {
     font-family: $fontFamily-text;
     font-weight: 500;
+}
+
+p {
+    color: $text-200;
+    line-height: 1.7;
 }
 
 ::-webkit-scrollbar {
@@ -144,11 +164,8 @@ p,span,div{
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--gold-crayola);
+    background-color: $primary-200;
 }
-
-
-// typography
 
 .label-1 {
     font-size: $fontSize-label-1;
@@ -163,27 +180,34 @@ p,span,div{
 }
 
 .headline-2 {
-
     font-size: $fontSize-headline-2;
 }
 
-.headline-3{
+.headline-3 {
     font-size: $fontSize-headline-3;
 }
 
-.headline-4{
+.headline-4 {
     font-size: $fontSize-headline-4;
 }
 
-.headline-5{
+.headline-5 {
     font-size: $fontSize-headline-5;
 }
 
-.btn{
+.btn {
     height: auto;
     width: auto;
-    background-color: $surface-200;
-    padding: 1.5rem 2rem;
-    border-radius: 5px;
+    background: linear-gradient(135deg, $primary-100, $primary-200);
+    padding: 1.4rem 2.2rem;
+    border-radius: 1.4rem;
     color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 40px rgba(79, 70, 229, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 20px 44px rgba(79, 70, 229, 0.32);
+    }
 }

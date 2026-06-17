@@ -1,31 +1,64 @@
-$primary-bg-color: #333;
-$primary-text-color: #fff;
-$hover-text-color: #ddd;
-$border-color: #555;
-$button-bg-color: #4CAF50;
-$button-hover-bg-color: #388E3C;
-
 .navbar {
-    background-color: $primary-bg-color;
-    padding: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1.8rem 2.4rem;
+    backdrop-filter: blur(18px);
+    background: rgba(8, 17, 32, 0.72);
+    border-bottom: 1px solid $border-soft;
 
     &-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 2rem;
+        max-width: 128rem;
+        margin: 0 auto;
     }
 
     &-logo {
         .logo-link {
-            color: $primary-text-color;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            color: $text-100;
+        }
+
+        .logo-mark {
+            width: 4.6rem;
+            height: 4.6rem;
+            display: grid;
+            place-items: center;
+            border-radius: 1.4rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(52, 211, 153, 0.85));
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.25);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+
+            strong {
+                font-size: 2rem;
+                color: $text-100;
+            }
+
+            small {
+                font-size: 1.2rem;
+                color: $text-300;
+                letter-spacing: 0.04em;
+            }
         }
     }
 
     &-links {
         display: flex;
+        align-items: center;
+        gap: 0.8rem;
     }
 
     &-profile {
@@ -34,23 +67,31 @@ $button-hover-bg-color: #388E3C;
 }
 
 .nav-link {
-    color: $primary-text-color;
-    font-size: 1.6rem;
-    margin-right: 2rem;
-    text-decoration: none;
+    color: $text-200;
+    font-size: 1.5rem;
+    padding: 1rem 1.4rem;
+    border-radius: 999px;
+    transition: background-color 0.25s ease, color 0.25s ease;
 
     &:hover {
-        color: $hover-text-color;
+        color: $text-100;
+        background: rgba(255, 255, 255, 0.05);
     }
 }
 
 .profile-info {
     display: flex;
     align-items: center;
+    gap: 1rem;
     cursor: pointer;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid $border-soft;
 
-    i{
-        font-size: 3rem;
+    i {
+        font-size: 2.4rem;
+        color: $text-300;
     }
 }
 
@@ -62,7 +103,7 @@ $button-hover-bg-color: #388E3C;
 }
 
 .user-name {
-    color: $primary-text-color;
+    color: $text-100;
     font-size: 1.6rem;
 }
 
@@ -70,52 +111,57 @@ $button-hover-bg-color: #388E3C;
     display: none;
     position: absolute;
     top: 100%;
-    right: -1.8rem;
-    background-color: $primary-bg-color;
-    border: 1px solid $border-color;
-    border-radius: 4px;
+    right: 0;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid $border-soft;
+    border-radius: 1.6rem;
     padding: 1rem;
-    z-index: 1000;    
+    z-index: 1000;
     margin-top: 1rem;
+    box-shadow: $shadow-soft;
 
     &.open {
         display: flex;
         flex-direction: column;
-        min-width: 300px;
-        text-align: center;
+        min-width: 28rem;
+        text-align: left;
     }
 }
 
 .dropdown-item {
     display: block;
-    color: $primary-text-color;
+    color: $text-200;
     text-decoration: none;
-    padding: 1.5rem 0;
-    font-size: 2rem;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
 
     &:hover {
-        color: $hover-text-color;
+        color: $text-100;
+        background: rgba(255, 255, 255, 0.05);
     }
 }
 
 .auth-button {
-    color: $primary-text-color;
-    padding: 1rem 1rem;
+    color: $text-100;
+    padding: 1.1rem 1.6rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 999px;
     cursor: pointer;
-    font-size: 1.8em;
-    background-color: $button-bg-color;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, $accent-100, $accent-200);
     margin-block: 1rem;
+    box-shadow: 0 12px 32px rgba(34, 197, 94, 0.22);
 
     &:hover {
-        background-color: $button-hover-bg-color;
+        opacity: 0.92;
     }
 }
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 2rem 1.5rem;
+        padding: 1.6rem 1.2rem;
+
         &-container {
             flex-wrap: wrap;
         }
@@ -134,5 +180,8 @@ $button-hover-bg-color: #388E3C;
         margin-block-start: 1rem;
     }
 
-
+    .user-name,
+    .logo-text small {
+        display: none;
+    }
 }
