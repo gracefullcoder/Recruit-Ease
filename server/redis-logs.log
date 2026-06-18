@@ -4011,3 +4011,2628 @@
   "status": "SUCCESS",
   "message": "Published to room:xSqEUwrhcC: user_left"
 }
+{
+  "timestamp": "2026-06-17T22:38:46.624+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "STARTING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-17T22:38:46.630+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "RUNNING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-17T22:38:47.493+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:lIZQDQROc_ZeD4YEAAAB",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:lIZQDQROc_ZeD4YEAAAB"
+}
+{
+  "timestamp": "2026-06-17T22:39:02.244+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:lIZQDQROc_ZeD4YEAAAB",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:lIZQDQROc_ZeD4YEAAAB"
+}
+{
+  "timestamp": "2026-06-17T22:39:02.595+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:PvfVRjrcGGhbUZZNAAAD",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:PvfVRjrcGGhbUZZNAAAD"
+}
+{
+  "timestamp": "2026-06-17T22:39:03.133+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:xSqEUwrhcC",
+  "data": {
+    "socketId": "PvfVRjrcGGhbUZZNAAAD",
+    "emailId": "",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room xSqEUwrhcC"
+}
+{
+  "timestamp": "2026-06-17T22:39:03.134+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SET",
+  "key": "room:xSqEUwrhcC",
+  "data": {
+    "participant1": "PvfVRjrcGGhbUZZNAAAD",
+    "participant2": null,
+    "status": "waiting",
+    "createdAt": "2026-06-17T17:09:03.134Z"
+  },
+  "status": "SUCCESS",
+  "message": "SET on room:xSqEUwrhcC"
+}
+{
+  "timestamp": "2026-06-17T22:39:03.136+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:PvfVRjrcGGhbUZZNAAAD",
+  "data": {
+    "emailId": "",
+    "roomId": "xSqEUwrhcC",
+    "userName": "You",
+    "joinedAt": "2026-06-17T17:09:03.135Z",
+    "role": "creator"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:PvfVRjrcGGhbUZZNAAAD"
+}
+{
+  "timestamp": "2026-06-17T22:39:03.137+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CREATED",
+  "key": "room:xSqEUwrhcC",
+  "data": {
+    "creator": "PvfVRjrcGGhbUZZNAAAD",
+    "status": "WAITING"
+  },
+  "status": "SUCCESS",
+  "message": "CREATED for room xSqEUwrhcC"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.304+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:PvfVRjrcGGhbUZZNAAAD",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:PvfVRjrcGGhbUZZNAAAD"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.310+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:PvfVRjrcGGhbUZZNAAAD",
+  "data": {
+    "emailId": "",
+    "roomId": "xSqEUwrhcC",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:PvfVRjrcGGhbUZZNAAAD"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.312+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:xSqEUwrhcC:participants",
+  "data": {
+    "removed": "PvfVRjrcGGhbUZZNAAAD",
+    "remainingParticipants": []
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:xSqEUwrhcC:participants"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.316+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:PvfVRjrcGGhbUZZNAAAD",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "",
+      "roomId": "xSqEUwrhcC",
+      "userName": "You"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:PvfVRjrcGGhbUZZNAAAD"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.318+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "room:xSqEUwrhcC",
+  "data": {
+    "reason": "empty",
+    "deletedAt": "2026-06-17T17:09:05.316Z"
+  },
+  "status": "SUCCESS",
+  "message": "DEL on room:xSqEUwrhcC"
+}
+{
+  "timestamp": "2026-06-17T22:39:05.319+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CLOSED",
+  "key": "room:xSqEUwrhcC",
+  "data": {
+    "reason": "all participants left"
+  },
+  "status": "SUCCESS",
+  "message": "CLOSED for room xSqEUwrhcC"
+}
+{
+  "timestamp": "2026-06-17T22:44:55.697+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:bo_xxBt4zc15FpKHAAAF",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:bo_xxBt4zc15FpKHAAAF"
+}
+{
+  "timestamp": "2026-06-17T22:44:56.750+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "socketId": "bo_xxBt4zc15FpKHAAAF",
+    "emailId": "codingvaibhav247@gmail.com",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:44:56.751+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SET",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "participant1": "bo_xxBt4zc15FpKHAAAF",
+    "participant2": null,
+    "status": "waiting",
+    "createdAt": "2026-06-17T17:14:56.751Z"
+  },
+  "status": "SUCCESS",
+  "message": "SET on room:IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:44:56.751+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:bo_xxBt4zc15FpKHAAAF",
+  "data": {
+    "emailId": "codingvaibhav247@gmail.com",
+    "roomId": "IPvugkdBq8",
+    "userName": "Vaibhav Gupta",
+    "joinedAt": "2026-06-17T17:14:56.751Z",
+    "role": "creator"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:bo_xxBt4zc15FpKHAAAF"
+}
+{
+  "timestamp": "2026-06-17T22:44:56.752+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CREATED",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "creator": "bo_xxBt4zc15FpKHAAAF",
+    "status": "WAITING"
+  },
+  "status": "SUCCESS",
+  "message": "CREATED for room IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.607+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:7q3xBifCrDeggnoSAAAH",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:7q3xBifCrDeggnoSAAAH"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.778+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "socketId": "7q3xBifCrDeggnoSAAAH",
+    "emailId": "",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.779+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "GET",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "exists": true,
+    "currentParticipants": 1,
+    "participants": [
+      "bo_xxBt4zc15FpKHAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "GET on room:IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.779+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SADD",
+  "key": "room:IPvugkdBq8:participants",
+  "data": {
+    "added": "7q3xBifCrDeggnoSAAAH",
+    "currentSet": [
+      "bo_xxBt4zc15FpKHAAAF",
+      "7q3xBifCrDeggnoSAAAH"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SADD on room:IPvugkdBq8:participants"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.780+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:7q3xBifCrDeggnoSAAAH",
+  "data": {
+    "emailId": "",
+    "roomId": "IPvugkdBq8",
+    "userName": "You",
+    "joinedAt": "2026-06-17T17:15:08.780Z"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:7q3xBifCrDeggnoSAAAH"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.781+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "channel": "room:IPvugkdBq8",
+    "event": "user_joined",
+    "newUser": {
+      "socketId": "7q3xBifCrDeggnoSAAAH",
+      "emailId": "",
+      "userName": "You"
+    },
+    "existingUser": {
+      "socketId": "bo_xxBt4zc15FpKHAAAF",
+      "emailId": "codingvaibhav247@gmail.com",
+      "roomId": "IPvugkdBq8",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:IPvugkdBq8: user_joined"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.794+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "PAIRED",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "participant1": "bo_xxBt4zc15FpKHAAAF",
+    "participant2": "7q3xBifCrDeggnoSAAAH",
+    "status": "ACTIVE"
+  },
+  "status": "SUCCESS",
+  "message": "PAIRED for room IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.870+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "offer",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: offer"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.889+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.899+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.908+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.918+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.921+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.923+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.925+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.926+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.928+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.929+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.932+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.933+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.977+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "answer",
+    "from": "bo_xxBt4zc15FpKHAAAF",
+    "to": "7q3xBifCrDeggnoSAAAH",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: answer"
+}
+{
+  "timestamp": "2026-06-17T22:45:08.996+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bo_xxBt4zc15FpKHAAAF",
+    "to": "7q3xBifCrDeggnoSAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.001+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bo_xxBt4zc15FpKHAAAF",
+    "to": "7q3xBifCrDeggnoSAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.013+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bo_xxBt4zc15FpKHAAAF",
+    "to": "7q3xBifCrDeggnoSAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.019+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bo_xxBt4zc15FpKHAAAF",
+    "to": "7q3xBifCrDeggnoSAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.074+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.081+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.088+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:09.092+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "7q3xBifCrDeggnoSAAAH",
+    "to": "bo_xxBt4zc15FpKHAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.481+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:7q3xBifCrDeggnoSAAAH",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:7q3xBifCrDeggnoSAAAH"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.482+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:7q3xBifCrDeggnoSAAAH",
+  "data": {
+    "emailId": "",
+    "roomId": "IPvugkdBq8",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:7q3xBifCrDeggnoSAAAH"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.482+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:IPvugkdBq8:participants",
+  "data": {
+    "removed": "7q3xBifCrDeggnoSAAAH",
+    "remainingParticipants": [
+      "bo_xxBt4zc15FpKHAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:IPvugkdBq8:participants"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.483+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:7q3xBifCrDeggnoSAAAH",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "",
+      "roomId": "IPvugkdBq8",
+      "userName": "You"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:7q3xBifCrDeggnoSAAAH"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.483+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "channel": "room:IPvugkdBq8",
+    "event": "user_left",
+    "leaver": "7q3xBifCrDeggnoSAAAH",
+    "remainingParticipants": [
+      "bo_xxBt4zc15FpKHAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:IPvugkdBq8: user_left"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.513+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:bo_xxBt4zc15FpKHAAAF",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:bo_xxBt4zc15FpKHAAAF"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.514+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:bo_xxBt4zc15FpKHAAAF",
+  "data": {
+    "emailId": "codingvaibhav247@gmail.com",
+    "roomId": "IPvugkdBq8",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:bo_xxBt4zc15FpKHAAAF"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.515+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:IPvugkdBq8:participants",
+  "data": {
+    "removed": "bo_xxBt4zc15FpKHAAAF",
+    "remainingParticipants": []
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:IPvugkdBq8:participants"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.515+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:bo_xxBt4zc15FpKHAAAF",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "codingvaibhav247@gmail.com",
+      "roomId": "IPvugkdBq8",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:bo_xxBt4zc15FpKHAAAF"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.516+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "reason": "empty",
+    "deletedAt": "2026-06-17T17:15:25.516Z"
+  },
+  "status": "SUCCESS",
+  "message": "DEL on room:IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-17T22:45:25.516+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CLOSED",
+  "key": "room:IPvugkdBq8",
+  "data": {
+    "reason": "all participants left"
+  },
+  "status": "SUCCESS",
+  "message": "CLOSED for room IPvugkdBq8"
+}
+{
+  "timestamp": "2026-06-18T14:10:13.559+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "STARTING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-18T14:10:13.571+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "RUNNING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-18T14:12:35.230+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:s5fFT9iV498SPOgGAAAB",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:s5fFT9iV498SPOgGAAAB"
+}
+{
+  "timestamp": "2026-06-18T14:12:38.962+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "socketId": "s5fFT9iV498SPOgGAAAB",
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:12:38.971+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SET",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "participant1": "s5fFT9iV498SPOgGAAAB",
+    "participant2": null,
+    "status": "waiting",
+    "createdAt": "2026-06-18T08:42:38.969Z"
+  },
+  "status": "SUCCESS",
+  "message": "SET on room:TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:12:38.972+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:s5fFT9iV498SPOgGAAAB",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "TYJ0mIqi11",
+    "userName": "Vaibhav Gupta",
+    "joinedAt": "2026-06-18T08:42:38.971Z",
+    "role": "creator"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:s5fFT9iV498SPOgGAAAB"
+}
+{
+  "timestamp": "2026-06-18T14:12:38.973+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CREATED",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "creator": "s5fFT9iV498SPOgGAAAB",
+    "status": "WAITING"
+  },
+  "status": "SUCCESS",
+  "message": "CREATED for room TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:13:04.522+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:sPvb5_1vT9yOhh_CAAAD",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:sPvb5_1vT9yOhh_CAAAD"
+}
+{
+  "timestamp": "2026-06-18T14:13:04.868+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:4GM3gGW44H",
+  "data": {
+    "socketId": "sPvb5_1vT9yOhh_CAAAD",
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room 4GM3gGW44H"
+}
+{
+  "timestamp": "2026-06-18T14:13:04.870+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SET",
+  "key": "room:4GM3gGW44H",
+  "data": {
+    "participant1": "sPvb5_1vT9yOhh_CAAAD",
+    "participant2": null,
+    "status": "waiting",
+    "createdAt": "2026-06-18T08:43:04.868Z"
+  },
+  "status": "SUCCESS",
+  "message": "SET on room:4GM3gGW44H"
+}
+{
+  "timestamp": "2026-06-18T14:13:04.872+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:sPvb5_1vT9yOhh_CAAAD",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "4GM3gGW44H",
+    "userName": "Vaibhav Gupta",
+    "joinedAt": "2026-06-18T08:43:04.871Z",
+    "role": "creator"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:sPvb5_1vT9yOhh_CAAAD"
+}
+{
+  "timestamp": "2026-06-18T14:13:04.873+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CREATED",
+  "key": "room:4GM3gGW44H",
+  "data": {
+    "creator": "sPvb5_1vT9yOhh_CAAAD",
+    "status": "WAITING"
+  },
+  "status": "SUCCESS",
+  "message": "CREATED for room 4GM3gGW44H"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.887+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:sPvb5_1vT9yOhh_CAAAD",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:sPvb5_1vT9yOhh_CAAAD"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.888+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:sPvb5_1vT9yOhh_CAAAD",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "4GM3gGW44H",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:sPvb5_1vT9yOhh_CAAAD"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.889+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:4GM3gGW44H:participants",
+  "data": {
+    "removed": "sPvb5_1vT9yOhh_CAAAD",
+    "remainingParticipants": []
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:4GM3gGW44H:participants"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.890+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:sPvb5_1vT9yOhh_CAAAD",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "vaibhavgupta10987@gmail.com",
+      "roomId": "4GM3gGW44H",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:sPvb5_1vT9yOhh_CAAAD"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.890+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "room:4GM3gGW44H",
+  "data": {
+    "reason": "empty",
+    "deletedAt": "2026-06-18T08:43:30.890Z"
+  },
+  "status": "SUCCESS",
+  "message": "DEL on room:4GM3gGW44H"
+}
+{
+  "timestamp": "2026-06-18T14:13:30.891+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CLOSED",
+  "key": "room:4GM3gGW44H",
+  "data": {
+    "reason": "all participants left"
+  },
+  "status": "SUCCESS",
+  "message": "CLOSED for room 4GM3gGW44H"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.317+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:bv70ZRIH4Rl39EZrAAAF",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:bv70ZRIH4Rl39EZrAAAF"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.650+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "socketId": "bv70ZRIH4Rl39EZrAAAF",
+    "emailId": "",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.653+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "GET",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "exists": true,
+    "currentParticipants": 1,
+    "participants": [
+      "s5fFT9iV498SPOgGAAAB"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "GET on room:TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.654+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SADD",
+  "key": "room:TYJ0mIqi11:participants",
+  "data": {
+    "added": "bv70ZRIH4Rl39EZrAAAF",
+    "currentSet": [
+      "s5fFT9iV498SPOgGAAAB",
+      "bv70ZRIH4Rl39EZrAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SADD on room:TYJ0mIqi11:participants"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.664+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:bv70ZRIH4Rl39EZrAAAF",
+  "data": {
+    "emailId": "",
+    "roomId": "TYJ0mIqi11",
+    "userName": "You",
+    "joinedAt": "2026-06-18T08:43:31.654Z"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:bv70ZRIH4Rl39EZrAAAF"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.668+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "channel": "room:TYJ0mIqi11",
+    "event": "user_joined",
+    "newUser": {
+      "socketId": "bv70ZRIH4Rl39EZrAAAF",
+      "emailId": "",
+      "userName": "You"
+    },
+    "existingUser": {
+      "socketId": "s5fFT9iV498SPOgGAAAB",
+      "emailId": "vaibhavgupta10987@gmail.com",
+      "roomId": "TYJ0mIqi11",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:TYJ0mIqi11: user_joined"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.681+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "PAIRED",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "participant1": "s5fFT9iV498SPOgGAAAB",
+    "participant2": "bv70ZRIH4Rl39EZrAAAF",
+    "status": "ACTIVE"
+  },
+  "status": "SUCCESS",
+  "message": "PAIRED for room TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.871+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "offer",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: offer"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.927+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.933+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.938+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.948+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.954+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.961+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.964+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:31.972+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.003+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.012+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.034+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.050+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.055+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.067+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.072+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.088+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.101+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.108+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.111+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.113+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.116+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.119+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.123+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.128+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "bv70ZRIH4Rl39EZrAAAF",
+    "to": "s5fFT9iV498SPOgGAAAB"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.141+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "answer",
+    "from": "s5fFT9iV498SPOgGAAAB",
+    "to": "bv70ZRIH4Rl39EZrAAAF",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: answer"
+}
+{
+  "timestamp": "2026-06-18T14:13:32.149+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "s5fFT9iV498SPOgGAAAB",
+    "to": "bv70ZRIH4Rl39EZrAAAF"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.281+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:s5fFT9iV498SPOgGAAAB",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:s5fFT9iV498SPOgGAAAB"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.282+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:s5fFT9iV498SPOgGAAAB",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "TYJ0mIqi11",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:s5fFT9iV498SPOgGAAAB"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.283+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:TYJ0mIqi11:participants",
+  "data": {
+    "removed": "s5fFT9iV498SPOgGAAAB",
+    "remainingParticipants": [
+      "bv70ZRIH4Rl39EZrAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:TYJ0mIqi11:participants"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.284+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:s5fFT9iV498SPOgGAAAB",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "vaibhavgupta10987@gmail.com",
+      "roomId": "TYJ0mIqi11",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:s5fFT9iV498SPOgGAAAB"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.285+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "channel": "room:TYJ0mIqi11",
+    "event": "user_left",
+    "leaver": "s5fFT9iV498SPOgGAAAB",
+    "remainingParticipants": [
+      "bv70ZRIH4Rl39EZrAAAF"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:TYJ0mIqi11: user_left"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.935+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:bv70ZRIH4Rl39EZrAAAF",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:bv70ZRIH4Rl39EZrAAAF"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.936+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:bv70ZRIH4Rl39EZrAAAF",
+  "data": {
+    "emailId": "",
+    "roomId": "TYJ0mIqi11",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:bv70ZRIH4Rl39EZrAAAF"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.937+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:TYJ0mIqi11:participants",
+  "data": {
+    "removed": "bv70ZRIH4Rl39EZrAAAF",
+    "remainingParticipants": []
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:TYJ0mIqi11:participants"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.937+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:bv70ZRIH4Rl39EZrAAAF",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "",
+      "roomId": "TYJ0mIqi11",
+      "userName": "You"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:bv70ZRIH4Rl39EZrAAAF"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.940+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "reason": "empty",
+    "deletedAt": "2026-06-18T08:44:44.938Z"
+  },
+  "status": "SUCCESS",
+  "message": "DEL on room:TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:14:44.945+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CLOSED",
+  "key": "room:TYJ0mIqi11",
+  "data": {
+    "reason": "all participants left"
+  },
+  "status": "SUCCESS",
+  "message": "CLOSED for room TYJ0mIqi11"
+}
+{
+  "timestamp": "2026-06-18T14:17:36.623+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:SyA4f0Hg2vBbXUhbAAAH",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:SyA4f0Hg2vBbXUhbAAAH"
+}
+{
+  "timestamp": "2026-06-18T14:17:38.118+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "socketId": "SyA4f0Hg2vBbXUhbAAAH",
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:38.120+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SET",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "participant1": "SyA4f0Hg2vBbXUhbAAAH",
+    "participant2": null,
+    "status": "waiting",
+    "createdAt": "2026-06-18T08:47:38.119Z"
+  },
+  "status": "SUCCESS",
+  "message": "SET on room:ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:38.121+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:SyA4f0Hg2vBbXUhbAAAH",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "ePj3IEsOBO",
+    "userName": "Vaibhav Gupta",
+    "joinedAt": "2026-06-18T08:47:38.120Z",
+    "role": "creator"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:SyA4f0Hg2vBbXUhbAAAH"
+}
+{
+  "timestamp": "2026-06-18T14:17:38.121+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CREATED",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "creator": "SyA4f0Hg2vBbXUhbAAAH",
+    "status": "WAITING"
+  },
+  "status": "SUCCESS",
+  "message": "CREATED for room ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.640+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:0bB-CiNr4z0KkOtqAAAJ",
+  "data": {
+    "event": "client_connected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:0bB-CiNr4z0KkOtqAAAJ"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.958+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "JOIN_ATTEMPT",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "socketId": "0bB-CiNr4z0KkOtqAAAJ",
+    "emailId": "",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "JOIN_ATTEMPT for room ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.960+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "GET",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "exists": true,
+    "currentParticipants": 1,
+    "participants": [
+      "SyA4f0Hg2vBbXUhbAAAH"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "GET on room:ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.964+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SADD",
+  "key": "room:ePj3IEsOBO:participants",
+  "data": {
+    "added": "0bB-CiNr4z0KkOtqAAAJ",
+    "currentSet": [
+      "SyA4f0Hg2vBbXUhbAAAH",
+      "0bB-CiNr4z0KkOtqAAAJ"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SADD on room:ePj3IEsOBO:participants"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.966+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HSET",
+  "key": "participant:0bB-CiNr4z0KkOtqAAAJ",
+  "data": {
+    "emailId": "",
+    "roomId": "ePj3IEsOBO",
+    "userName": "You",
+    "joinedAt": "2026-06-18T08:47:43.965Z"
+  },
+  "status": "SUCCESS",
+  "message": "HSET on participant:0bB-CiNr4z0KkOtqAAAJ"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.970+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "channel": "room:ePj3IEsOBO",
+    "event": "user_joined",
+    "newUser": {
+      "socketId": "0bB-CiNr4z0KkOtqAAAJ",
+      "emailId": "",
+      "userName": "You"
+    },
+    "existingUser": {
+      "socketId": "SyA4f0Hg2vBbXUhbAAAH",
+      "emailId": "vaibhavgupta10987@gmail.com",
+      "roomId": "ePj3IEsOBO",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:ePj3IEsOBO: user_joined"
+}
+{
+  "timestamp": "2026-06-18T14:17:43.978+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "PAIRED",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "participant1": "SyA4f0Hg2vBbXUhbAAAH",
+    "participant2": "0bB-CiNr4z0KkOtqAAAJ",
+    "status": "ACTIVE"
+  },
+  "status": "SUCCESS",
+  "message": "PAIRED for room ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.149+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "offer",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: offer"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.163+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.166+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.170+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.173+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.181+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.196+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.202+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.213+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.215+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.218+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.220+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.223+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.267+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.281+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.356+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.387+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.411+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.435+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.448+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.458+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.481+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.483+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.495+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.517+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.521+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.534+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.542+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "0bB-CiNr4z0KkOtqAAAJ",
+    "to": "SyA4f0Hg2vBbXUhbAAAH"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.566+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "answer",
+    "from": "SyA4f0Hg2vBbXUhbAAAH",
+    "to": "0bB-CiNr4z0KkOtqAAAJ",
+    "hasSDP": true
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: answer"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.578+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "SyA4f0Hg2vBbXUhbAAAH",
+    "to": "0bB-CiNr4z0KkOtqAAAJ"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.580+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "SyA4f0Hg2vBbXUhbAAAH",
+    "to": "0bB-CiNr4z0KkOtqAAAJ"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.584+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "SyA4f0Hg2vBbXUhbAAAH",
+    "to": "0bB-CiNr4z0KkOtqAAAJ"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:44.664+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:unknown",
+  "data": {
+    "channel": "room:unknown",
+    "event": "ice-candidate",
+    "from": "SyA4f0Hg2vBbXUhbAAAH",
+    "to": "0bB-CiNr4z0KkOtqAAAJ"
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:unknown: ice-candidate"
+}
+{
+  "timestamp": "2026-06-18T14:17:55.558+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:0bB-CiNr4z0KkOtqAAAJ",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:0bB-CiNr4z0KkOtqAAAJ"
+}
+{
+  "timestamp": "2026-06-18T14:17:55.560+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:0bB-CiNr4z0KkOtqAAAJ",
+  "data": {
+    "emailId": "",
+    "roomId": "ePj3IEsOBO",
+    "userName": "You"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:0bB-CiNr4z0KkOtqAAAJ"
+}
+{
+  "timestamp": "2026-06-18T14:17:55.562+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:ePj3IEsOBO:participants",
+  "data": {
+    "removed": "0bB-CiNr4z0KkOtqAAAJ",
+    "remainingParticipants": [
+      "SyA4f0Hg2vBbXUhbAAAH"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:ePj3IEsOBO:participants"
+}
+{
+  "timestamp": "2026-06-18T14:17:55.563+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:0bB-CiNr4z0KkOtqAAAJ",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "",
+      "roomId": "ePj3IEsOBO",
+      "userName": "You"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:0bB-CiNr4z0KkOtqAAAJ"
+}
+{
+  "timestamp": "2026-06-18T14:17:55.565+05:30",
+  "level": "info",
+  "component": "REDIS_PUBSUB",
+  "operation": "PUBLISH",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "channel": "room:ePj3IEsOBO",
+    "event": "user_left",
+    "leaver": "0bB-CiNr4z0KkOtqAAAJ",
+    "remainingParticipants": [
+      "SyA4f0Hg2vBbXUhbAAAH"
+    ]
+  },
+  "status": "SUCCESS",
+  "message": "Published to room:ePj3IEsOBO: user_left"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.596+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "CONNECTION",
+  "key": "socket:SyA4f0Hg2vBbXUhbAAAH",
+  "data": {
+    "event": "client_disconnected"
+  },
+  "status": "SUCCESS",
+  "message": "CONNECTION on socket:SyA4f0Hg2vBbXUhbAAAH"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.597+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "HGETALL",
+  "key": "participant:SyA4f0Hg2vBbXUhbAAAH",
+  "data": {
+    "emailId": "vaibhavgupta10987@gmail.com",
+    "roomId": "ePj3IEsOBO",
+    "userName": "Vaibhav Gupta"
+  },
+  "status": "SUCCESS",
+  "message": "HGETALL on participant:SyA4f0Hg2vBbXUhbAAAH"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.597+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "SREM",
+  "key": "room:ePj3IEsOBO:participants",
+  "data": {
+    "removed": "SyA4f0Hg2vBbXUhbAAAH",
+    "remainingParticipants": []
+  },
+  "status": "SUCCESS",
+  "message": "SREM on room:ePj3IEsOBO:participants"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.603+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "participant:SyA4f0Hg2vBbXUhbAAAH",
+  "data": {
+    "deleted": true,
+    "data": {
+      "emailId": "vaibhavgupta10987@gmail.com",
+      "roomId": "ePj3IEsOBO",
+      "userName": "Vaibhav Gupta"
+    }
+  },
+  "status": "SUCCESS",
+  "message": "DEL on participant:SyA4f0Hg2vBbXUhbAAAH"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.606+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "DEL",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "reason": "empty",
+    "deletedAt": "2026-06-18T08:47:56.604Z"
+  },
+  "status": "SUCCESS",
+  "message": "DEL on room:ePj3IEsOBO"
+}
+{
+  "timestamp": "2026-06-18T14:17:56.608+05:30",
+  "level": "info",
+  "component": "ROOM_MANAGER",
+  "operation": "CLOSED",
+  "key": "room:ePj3IEsOBO",
+  "data": {
+    "reason": "all participants left"
+  },
+  "status": "SUCCESS",
+  "message": "CLOSED for room ePj3IEsOBO"
+}
