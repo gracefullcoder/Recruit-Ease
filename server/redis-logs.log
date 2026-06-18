@@ -6636,3 +6636,55 @@
   "status": "SUCCESS",
   "message": "CLOSED for room ePj3IEsOBO"
 }
+{
+  "timestamp": "2026-06-18T16:06:05.898+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "STARTING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-18T16:06:05.902+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "RUNNING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-18T16:06:41.866+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "STARTING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
+{
+  "timestamp": "2026-06-18T16:06:41.871+05:30",
+  "level": "info",
+  "component": "REDIS",
+  "operation": "INFO",
+  "key": "server:status",
+  "data": {
+    "status": "RUNNING",
+    "port": 8000
+  },
+  "status": "SUCCESS",
+  "message": "INFO on server:status"
+}
